@@ -26,7 +26,7 @@ export default function Footer() {
                 <div className='footer__content--contact'>
                     <p>Nous contacter</p>
                     <a href="contact" title="Redirige ver la page de contact">Page de contact</a>
-                    <a href="tel:+0692417574">Mobile : 0692 41 75 74</a>
+                    <a href="tel:+0692417574" title='Numero de téléphone pour joindre Jon_dev'>Mobile : 0692 41 75 74</a>
                 </div>
                 <div className='footer__content--reseaux'>
                     <p>Réseaux sociaux</p>
