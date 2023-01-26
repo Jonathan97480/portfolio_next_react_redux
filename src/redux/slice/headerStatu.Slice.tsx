@@ -32,7 +32,11 @@ export const HeaderStatuSlice = createSlice({
         setError: (state, action) => {
             state.error = action.payload;
 
-        }
+        },
+        setHeader: (state, action) => {
+            state.isOPen = action.payload;
+            state.error = null;
+        },
     },
 
 
@@ -40,9 +44,10 @@ export const HeaderStatuSlice = createSlice({
 
 
 
-export const { closeHeader, setError, openHeader } = HeaderStatuSlice.actions;
+export const { closeHeader, setError, openHeader, setHeader } = HeaderStatuSlice.actions;
 
 export const selectCloseHeader = (state: any) => state.Header.isOpen;
 export const selectPartenairesLoading = (state: any) => state.Header.loading;
+
 
 export default HeaderStatuSlice.reducer;
