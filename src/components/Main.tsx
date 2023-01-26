@@ -64,7 +64,7 @@ export default function Main({ children, className, pageTitle, pageDescription }
                     property="og:description"
                     content={pageDescription}
                 />
-                <meta property="og:image" content="../img/logo-jcv.png" />
+                <meta property="og:image" content="../images/icons/logo.png" />
             </Head>
             <div onClick={headerClose} className={className}>
                 {children}
