@@ -11,6 +11,7 @@ export default function Home() {
     return (
         <Main
             pageTitle={"Page d'accueille"}
+            className="hp-m"
             pageDescription={`Bienvenue sur Jon_dev, votre destination pour tout ce qui concerne le développement web et mobile. 
             Nous offrons des services professionnels pour créer et améliorer vos sites web et applications. 
             Notre équipe expérimentée peut vous aider à atteindre vos objectifs. 

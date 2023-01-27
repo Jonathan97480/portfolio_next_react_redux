@@ -1,0 +1,109 @@
+.footer{
+    background-color: var(--bk-color-primary);
+    &__content{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4.6rem 0;
+        gap: 4.6rem;
+        max-width: 1920px;
+        margin: auto;
+
+        @include media(medium){
+            flex-direction: row;
+            justify-content: center;
+            gap: 14.2rem;
+        }
+        p{
+            font-family: Roboto_slab;
+            font-weight: 600;
+            font-size: 1.7rem;
+            font-weight: 400;
+            color: var(--color-primary);
+            
+        }
+        &--navigation,&--utiles,&--contact,&--reseaux{
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            align-items: center;
+            a{
+                font-family: Roboto;
+                font-weight: 400;
+                font-size: 1.3rem;
+                
+                color: var(--color-primary);
+                text-decoration: none;
+            }
+
+        }
+        &--navigation{
+            ul{
+                display: flex;
+                flex-direction: column;
+                gap: 0.9rem;
+                align-items: center;
+                   a{
+                    font-family: Roboto;
+                font-size: 1.3rem;
+                color: var(--color-primary);
+                }
+            }
+        }
+        &--contact{
+            a{
+                &:nth-child(3){
+                    color: var(--color-primary);
+                  &:hover{
+                    color:var(--color-tertiary);
+
+                    }
+                }
+            }
+        }
+        &--reseaux{
+            
+            &--icon{
+                display: flex;
+                gap: 1.9rem;
+                a{
+                    font-family: Roboto;
+                font-size: 2.4rem;
+                color: var(--color-primary);
+
+                &:first-child{
+                    :hover{
+                    color: #0a66c2;
+
+                    }
+
+                }
+                &:nth-child(2){
+                    :hover{
+                    color: #0077b5;
+
+                    }
+
+                }
+                &:nth-child(3){
+                    :hover{
+                    color: #00a0dc;
+
+                    }
+
+                }
+            }
+             
+            }
+        }
+    }
+    &__copy{
+        text-align: center;
+        color: var(--color-primary);
+        font-family: Roboto;
+        font-size: 1.3rem;
+        font-weight: 400;
+        padding: 1rem 0;
+    }
+}

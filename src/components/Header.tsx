@@ -19,26 +19,28 @@ export default function Header() {
     }, [HeaderRedux]);
 
     return (
-        <header className='header'>
-            <GiHamburgerMenu className='header__burgerIcon' onClick={() => dispatch(setHeader(!isOpen))} />
-            <div className={isOpen ? 'header__content header__content-active' : 'header__content'}>
+        <header className={isOpen ? 'header header__active' : 'header'}>
+            <div className='header__burgerContent'>
+                <GiHamburgerMenu className='header__burgerContent--burgerIcon' onClick={() => dispatch(setHeader(!isOpen))} />
+            </div>
+            <div className='header__content' >
                 <Image className='header__content--image' src={require('../images/icons/logo.png')} alt="logo du site" width={47} height={57} />
                 <nav className='header__content--nav'>
-                    <ul className='header__content--ul'>
-                        <li className='header__content--ul__li'>
+                    <ul className='header__content--nav__ul'>
+                        <li >
                             <Link onClick={() => dispatch(setHeader(!isOpen))} href="/#home" title="Lien qui redirige vers la page d'accueil">Accueil</Link>
                         </li>
-                        <li className='header__content--ul__li'>
-                            <Link onClick={() => dispatch(setHeader(!isOpen))} href="/#about" title="Lien qui redirige vers la section qui somme nous">Qui sommes nous</Link>
+                        <li >
+                            <Link onClick={() => dispatch(setHeader(!isOpen))} href="/#about" title="Lien qui redirige vers la section qui somme nous">A-propos</Link>
                         </li>
-                        <li className='header__content--ul__li'>
-                            <Link onClick={() => dispatch(setHeader(!isOpen))} href="/#projet" title="Lien qui redirige vers la section nos projets">Nos projets</Link>
+                        <li >
+                            <Link onClick={() => dispatch(setHeader(!isOpen))} href="/#projet" title="Lien qui redirige vers la section nos projets">projets</Link>
                         </li>
-                        <li className='header__content--ul__li'>
-                            <Link onClick={() => dispatch(setHeader(!isOpen))} href="/#methode" title="Lien qui redirige vers la section nos méthode de travail">Nos méthode de travail</Link>
+                        <li >
+                            <Link onClick={() => dispatch(setHeader(!isOpen))} href="/#methode" title="Lien qui redirige vers la section nos méthode de travail">méthode de travail</Link>
                         </li>
-                        <li className='header__content--ul__li'>
-                            <Link onClick={() => dispatch(setHeader(!isOpen))} href="/contact" title="Lien qui redirige vers la page de contact">Nous contacter</Link>
+                        <li >
+                            <Link onClick={() => dispatch(setHeader(!isOpen))} href="/contact" title="Lien qui redirige vers la page de contact">contact</Link>
                         </li>
                     </ul>
                 </nav>
@@ -46,6 +48,6 @@ export default function Header() {
                     dispatch(setHeader(!isOpen))
                 }} />
             </div>
-        </header>
+        </header >
     )
 }

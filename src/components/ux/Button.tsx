@@ -17,7 +17,7 @@ export default function Button({ text, onClick, disabled = false, inverted = fal
     useEffect(() => {
 
         if (disabled) {
-            setButtonStyle('btn btn-primary disabled');
+            setButtonStyle('btn btn-primary btn-disabled');
         } else if (inverted) {
             setButtonStyle('btn btn-secondary');
         } else {

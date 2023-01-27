@@ -1,4 +1,5 @@
 import { BsFacebook, BsLinkedin, BsTwitter } from 'react-icons/bs';
+import Link from 'next/link';
 
 export default function Footer() {
 
@@ -9,36 +10,46 @@ export default function Footer() {
                     <p>Navigations</p>
                     <nav className='footer__content--navigation__nav'>
                         <ul className='footer__content--navigation__nav--ul'>
-                            <li className='footer__content--navigation__nav--ul__li'>Accueil</li>
-                            <li className='footer__content--navigation__nav--ul__li'>Qui sommes nous</li>
-                            <li className='footer__content--navigation__nav--ul__li'>Nos projets</li>
-                            <li className='footer__content--navigation__nav--ul__li'>Nos méthode de travail</li>
-                            <li className='footer__content--navigation__nav--ul__li'>Nous contacter</li>
+                            <li >
+                                <Link href="/#home" title="Lien qui redirige vers la page d'accueil">Accueil</Link>
+                            </li>
+                            <li >
+                                <Link href="/#about" title="Lien qui redirige vers la section qui somme nous">A-propos</Link>
+                            </li>
+                            <li >
+                                <Link href="/#projet" title="Lien qui redirige vers la section nos projets">projets</Link>
+                            </li>
+                            <li >
+                                <Link href="/#methode" title="Lien qui redirige vers la section nos méthode de travail">méthode de travail</Link>
+                            </li>
+
                         </ul>
                     </nav>
 
                 </div>
                 <div className='footer__content--utiles'>
                     <p>liens utiles</p>
-                    <a href="Mentions légales " title="Redirige ver les mentions légales"></a>
-                    <a href="RGPD " title="Redirige ver les RGPD"></a>
+                    <Link href="legales" title="Redirige ver les mentions légales">Mentions légales</Link>
+                    <Link href="legales#rgpd " title="Redirige ver les RGPD">RGPD</Link>
                 </div>
                 <div className='footer__content--contact'>
                     <p>Nous contacter</p>
-                    <a href="contact" title="Redirige ver la page de contact">Page de contact</a>
+                    <Link href="contact" title="Redirige ver la page de contact">Page de contact</Link>
                     <a href="tel:+0692417574" title='Numero de téléphone pour joindre Jon_dev'>Mobile : 0692 41 75 74</a>
                 </div>
                 <div className='footer__content--reseaux'>
                     <p>Réseaux sociaux</p>
-                    <a href="https://www.linkedin.com/in/gauvin-jonathan" title='Lien ver mon LinkedIn' target={"_blank"} rel="noreferrer">
-                        <BsLinkedin />
-                    </a>
-                    <a href="https://www.facebook.com/jon.dev974" title='Lien ver mon Facebook' target={"_blank"} rel="noreferrer">
-                        <BsFacebook />
-                    </a>
-                    <a href="https://twitter.com/jonathanfrt9741" title='Lien ver mon Twitter' target={"_blank"} rel="noreferrer">
-                        <BsTwitter />
-                    </a>
+                    <div className='footer__content--reseaux--icon'>
+                        <a href="https://www.linkedin.com/in/gauvin-jonathan" title='Lien ver mon LinkedIn' target={"_blank"} rel="noreferrer">
+                            <BsLinkedin />
+                        </a>
+                        <a href="https://www.facebook.com/jon.dev974" title='Lien ver mon Facebook' target={"_blank"} rel="noreferrer">
+                            <BsFacebook />
+                        </a>
+                        <a href="https://twitter.com/jonathanfrt9741" title='Lien ver mon Twitter' target={"_blank"} rel="noreferrer">
+                            <BsTwitter />
+                        </a>
+                    </div>
                 </div>
             </div>
             <p className='footer__copy'>©copyright jon_dev 2023</p>
