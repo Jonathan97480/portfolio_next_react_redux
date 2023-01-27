@@ -1,0 +1,94 @@
+.slidersProjets{
+
+    width:100%;
+    margin: auto;
+    margin-bottom: 4.3rem;
+    background-color: var(--color-primary);
+    padding: 23px;
+    border-radius: 25px;
+    box-shadow: 0px 2px 24px rgba(0, 0, 0, 0.05);
+   @include media(medium){
+         width: 832px;
+         height: 377px;
+        }
+     
+    &__title{
+        font-family: Roboto;
+        font-size: 2.5rem;
+        text-align: center;
+        font-weight: 600;
+        color: var(--color-secondary);
+        margin-bottom: 3rem;
+
+    }
+    &__content{
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+        color: var(--color-secondary);
+        @include media(medium){
+            flex-direction: row;
+            gap: 2.5rem;
+        }
+        &-cover{
+            width: 95%;
+            margin: auto;
+            border-radius: 2rem;
+               @include media(medium){
+        width: 50%;
+        }
+        }
+
+        &-info{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 3.3rem; 
+          
+
+            h3,h4{
+                 
+            font-family: Roboto;
+            font-size: 3rem;
+           
+            font-weight: 600;
+            color: var(--color-secondary);
+           
+        
+            }
+            h4{
+                font-size: 2.4rem;
+                font-weight: 400;
+                 margin-bottom: 1rem;
+            }
+        
+            span{
+                display: flex;
+                gap: 1.7rem;
+                 @include media(medium){
+                  
+                    align-items: center;
+                    justify-content: center;
+             }
+                a{
+                    font-family: Roboto;
+                    font-weight: 400;
+                    font-size: 2rem;
+                    color: var(--color-tertiary);
+                    text-decoration: none;
+                }
+            }
+                   @include media(medium){
+                    width: 50%;
+                    align-items: center;
+                    justify-content: center;
+                    div{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                    }
+             }
+        }
+    }
+}

@@ -1,8 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Main } from "@/components";
+import { Main, SlidersHome, SlidersProjets } from "@/components";
 import Carousel, { CarouselItem } from "@/components/Carousel";
 import { Button } from "@/components/ux";
 import Image from "next/image";
+import bg_remarque from '../images/cover/remarque.jpg'
+import bg_services from '../images/cover/services.jpg'
+import bg_projet from '../images/cover/projet.jpg'
+
 
 
 
@@ -11,147 +15,118 @@ export default function Home() {
     return (
         <Main
             pageTitle={"Page d'accueille"}
-            className="hp-m"
-            pageDescription={`Bienvenue sur Jon_dev, votre destination pour tout ce qui concerne le développement web et mobile. 
+            className="home hp-m"
+            pageDescription={`Bienvenue sur Jon_dev, votre destination pour tout ce qui concerne le développement web et mobile.
+ 
             Nous offrons des services professionnels pour créer et améliorer vos sites web et applications. 
             Notre équipe expérimentée peut vous aider à atteindre vos objectifs. 
             Visitez notre site pour en savoir plus sur nos services et pour obtenir des conseils sur le développement.`}>
-            {/*   <section>
+            <section className="home__heroHome">
                 <Carousel>
                     <CarouselItem>
-                        <div>
-                            <Image src={require('../images/cover/projet.jpg')} alt="logo du site" width={1280} height={600} />
-                              <div>
-                                <h2>Vous avez un projet </h2>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur. Aliquam tellus at non ac nibh ut. Ultrices mollis facilisi eu pellentesque id tristique quam et tortor. Lacinia elit felis hendrerit aliquam.
+                        <SlidersHome img={{
+                            src: bg_projet.src,
+                            alt: "logo du site"
+                        }}
+                            title={"Vous avez un projet"}
+                            text={`Lorem ipsum dolor sit amet consectetur. Aliquam tellus at non ac nibh ut.Ultrices mollis facilisi eu pellentesque id tristique quam et tortor.Lacinia elit felis hendrerit aliquam.`}
+                        />
 
-                                </p>
-                            </div> 
-                        </div>
                     </CarouselItem>
                     <CarouselItem>
-                        <div>
-                            <Image src={require('../images/cover/services.jpg')} alt="logo du site" width={1280} height={600} />
-                                  <div>
-                                <h2>Notre xpérience à votre service</h2>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur. Aliquam tellus at non ac nibh ut. Ultrices mollis facilisi eu pellentesque id tristique quam et tortor. Lacinia elit felis hendrerit aliquam.
+                        <SlidersHome img={{
+                            src: bg_services.src,
+                            alt: "logo du site"
+                        }}
+                            title={"Notre xpérience à votre service"}
+                            text={"Lorem ipsum dolor sit amet consectetur. Aliquam tellus at non ac nibh ut. Ultrices mollis facilisi eu pellentesque id tristique quam et tortor. Lacinia elit felis hendrerit aliquam."}
+                        />
 
-                                </p>
-                            </div> 
-                        </div>
                     </CarouselItem>
                     <CarouselItem>
-                        <div>
-                            <Image src={require('../images/cover/remarque.jpg')} alt="logo du site" width={1280} height={600} />
-                                  <div>
-                                <h2>Faite vous remarqué </h2>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur. Aliquam tellus at non ac nibh ut. Ultrices mollis facilisi eu pellentesque id tristique quam et tortor. Lacinia elit felis hendrerit aliquam.
+                        <SlidersHome img={{
+                            src: bg_remarque.src,
+                            alt: "logo du site"
+                        }}
+                            title={"Faite vous remarqué"}
+                            text={"Lorem ipsum dolor sit amet consectetur. Aliquam tellus at non ac nibh ut. Ultrices mollis facilisi eu pellentesque id tristique quam et tortor. Lacinia elit felis hendrerit aliquam."}
+                        />
 
-                                </p>
-                            </div> 
-                        </div>
                     </CarouselItem>
                 </Carousel>
             </section>
-            <section>
-                <h2>Qui sommes nous</h2>
-                <div>
+            <section className="home__about ph-26">
+                <h2 className="title">Qui sommes nous</h2>
+                <div className="home__about--content">
                     <Image src={require('../images/cover/about.jpg')} alt="logo du site" width={576} height={309} />
-                    <div>
-                        <p>
+                    <div className="home__about--content_insertion">
+                        <p className="paragraphe">
                             Jon_dev est une auto entreprise de profession libérale spécialisée dans le développement web et mobile pour les petites et moyennes entreprises. elle à pour objectif de permettre à nos clients d'être visibles sur Internet en utilisant les dernières technologies telles que React, React Native, Nextjs, WordPress, PrestaShop, Strapi, Firebase et Redux...
                         </p>
-                        <Button
-                            onClick={() => { }}
-                            text="En savoir plus"
-                        />
+                        <span>
+                            <Button
+                                onClick={() => { }}
+                                text="En savoir plus"
+                            />
+                        </span>
+
 
                     </div>
                 </div>
             </section>
-            <section>
-                <h2>Nos derniéres projets</h2>
+            <section className="home__projets ph-26">
+                <h2 className="home__projets-title title">Nos derniers projets</h2>
                 <Carousel>
                     <CarouselItem>
-                        <div>
-                            <h2>Titre du projet</h2>
-                            <div>
-                                <Image src={require('../images/cover/projet.jpg')} alt="logo du site" width={397} height={252} />
-                                <div>
-                                    <h3>Technologies utiliser  </h3>
-                                    <span>
-                                        <Image src={require('../images/icons/strapi.png')} alt="logo du site" width={50} height={50} />
-                                        <Image src={require('../images/icons/strapi.png')} alt="logo du site" width={50} height={50} />
-                                        <Image src={require('../images/icons/strapi.png')} alt="logo du site" width={50} height={50} />
-                                    </span>
-                                    <div>
-                                        <h4>Liens utiles </h4>
-                                        <span>
-                                            <a href="">Android</a>
-                                            <a href="">IPhone</a>
-                                            <a href="">Site</a>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <SlidersProjets
+                            img={{
+                                src: bg_remarque.src,
+                                alt: "logo du site"
+                            }}
+
+                            title={"Devis power"}
+                            text={"lorem ipsum dolor sit amet consectetur adipisicing elit."}
+                        />
                     </CarouselItem>
                     <CarouselItem>
-                        <div>
-                            <h2>Titre du projet</h2>
-                            <div>
-                                <Image src={require('../images/cover/projet.jpg')} alt="logo du site" width={397} height={252} />
-                                <div>
-                                    <h3>Technologies utiliser  </h3>
-                                    <span>
-                                        <Image src={require('../images/icons/strapi.png')} alt="logo du site" width={50} height={50} />
-                                        <Image src={require('../images/icons/strapi.png')} alt="logo du site" width={50} height={50} />
-                                        <Image src={require('../images/icons/strapi.png')} alt="logo du site" width={50} height={50} />
-                                    </span>
-                                    <div>
-                                        <h4>Liens utiles </h4>
-                                        <span>
-                                            <a href="">Android</a>
-                                            <a href="">IPhone</a>
-                                            <a href="">Site</a>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <SlidersProjets
+                            img={{
+                                src: bg_remarque.src,
+                                alt: "logo du site"
+                            }}
+
+                            title={"JCVConsult"}
+                            text={"lorem ipsum dolor sit amet consectetur adipisicing elit."}
+                        />
                     </CarouselItem>
                     <CarouselItem>
-                        <div>
-                            <h2>Titre du projet</h2>
-                            <div>
-                                <Image src={require('../images/cover/projet.jpg')} alt="logo du site" width={397} height={252} />
-                                <div>
-                                    <h3>Technologies utiliser  </h3>
-                                    <span>
-                                        <Image src={require('../images/icons/strapi.png')} alt="logo du site" width={50} height={50} />
-                                        <Image src={require('../images/icons/strapi.png')} alt="logo du site" width={50} height={50} />
-                                        <Image src={require('../images/icons/strapi.png')} alt="logo du site" width={50} height={50} />
-                                    </span>
-                                    <div>
-                                        <h4>Liens utiles </h4>
-                                        <span>
-                                            <a href="">Android</a>
-                                            <a href="">IPhone</a>
-                                            <a href="">Site</a>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <SlidersProjets
+                            img={{
+                                src: bg_remarque.src,
+                                alt: "logo du site"
+                            }}
+
+                            title={"Oasis Radio"}
+                            text={"lorem ipsum dolor sit amet consectetur adipisicing elit."}
+                        />
                     </CarouselItem>
+                    <CarouselItem>
+                        <SlidersProjets
+                            img={{
+                                src: bg_remarque.src,
+                                alt: "logo du site"
+                            }}
+
+                            title={"lgo"}
+                            text={"lorem ipsum dolor sit amet consectetur adipisicing elit."}
+                        />
+                    </CarouselItem>
+
                 </Carousel>
 
             </section>
 
-            <section>
+            {/* <section>
                 <h2>Nos méthode de travail</h2>
                 <div>
                     <Carousel>
