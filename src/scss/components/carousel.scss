@@ -3,30 +3,27 @@
   max-width: 1920px;
   margin: auto;
   position: relative;
-  
-}
 
-.inner {
+  .inner {
   white-space: nowrap;
   transition: transform 0.3s;
 }
 
-.carousel-item {
-  display:inline-flex;
-  align-items: center;
-  justify-content: center;
- 
-
-  color: #fff;
-}
-
 .indicators {
   position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
+ 
   display: flex;
   justify-content: center;
+right: 0;
+  left: 0;
+  &-bottom { 
+  bottom: 0;
+  }
+
+  &-top {
+    top: 0;
+   
+  }
 }
 
 .indicators > button {
@@ -37,3 +34,27 @@
  
   color: #fff;
 }
+.circle{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  margin: 5px;
+  border: 1px solid var(--color-primary);
+}
+  
+}
+
+
+
+.carousel-item {
+  display:inline-flex;
+  align-items: center;
+  justify-content: center;
+ 
+
+  color: #fff;
+}
+
+
+

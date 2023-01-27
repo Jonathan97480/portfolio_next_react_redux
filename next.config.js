@@ -1,8 +1,15 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  experimental: {
-    appDir: true,
+
+module.exports={
+  reactStrictMode: true,
+  swcMinify: true,
+
+  images: {
+    domains: ['api.jcvconsult.re'
+    ],
+  },
+  i18n: {
+    locales: ["fr"],
+    defaultLocale: "fr",
   },
 }
-
-module.exports = nextConfig

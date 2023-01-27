@@ -1,36 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 
 interface ButtonProps {
-    text: string;
-    onClick: () => void;
-    disabled?: boolean;
-    inverted?: boolean;
-
-
+    text: string
+    onClick: () => void
+    disabled?: boolean
+    inverted?: boolean
 }
 
-
 export default function Button({ text, onClick, disabled = false, inverted = false }: ButtonProps) {
-
-    const [buttonStyle, setButtonStyle] = useState<string>('btn btn-primary');
+    const [buttonStyle, setButtonStyle] = useState<string>('btn btn-primary')
 
     useEffect(() => {
-
         if (disabled) {
-            setButtonStyle('btn btn-primary btn-disabled');
+            setButtonStyle('btn btn-primary btn-disabled')
         } else if (inverted) {
-            setButtonStyle('btn btn-secondary');
+            setButtonStyle('btn btn-secondary')
         } else {
-            setButtonStyle('btn btn-primary');
+            setButtonStyle('btn btn-primary')
         }
-
-    }, [disabled, inverted]);
+    }, [disabled, inverted])
 
     return (
         <button className={buttonStyle} onClick={onClick}>
-            <p>
-                {text}
-            </p>
+            <p>{text}</p>
         </button>
     )
 }
