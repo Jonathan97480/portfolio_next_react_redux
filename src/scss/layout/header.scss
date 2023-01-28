@@ -1,20 +1,34 @@
 .header{
     display: flex;
+    position:sticky;
+   
+    top: 0;
+    left: 0;
     justify-content: flex-start;
     flex-direction: column;
-  overflow: hidden;
-   width: 100vw;
-   height:8rem ;
-   padding: 2.3rem 1.6rem;
-   transition: all 0.3s ease-in-out;
+   /*  overflow: hidden; */
+    background-color: var(--color-primary);
+    z-index: 5;
+   
+    max-width: 100vw;
+    height:8rem ;
+    padding: 2.3rem 1.6rem;
+    transition: all 0.3s ease-in-out;
 
     @include media(medium){
-         padding: 1.3rem 1.6rem;
+        padding: 1.3rem 1.6rem;
         flex-direction: row;
     }
-&__active{
-    height: 45.3rem;
-}
+    &__active{
+        height: 45.3rem;
+        .header{
+            overflow: hidden;
+            &__content{
+                display: flex;
+            }
+            
+        }
+    }
     &__burgerContent{
         display:flex;
         justify-content: flex-end;
@@ -31,17 +45,19 @@
     }
 
     &__content{
-        display: flex;
+        display: none;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
         gap: 2.3rem;
-             @include media(medium){
-        flex-direction: row;
-        width: 100%;
-        max-width: 1920px;
-        margin:auto; 
-    }
+        @include media(medium){
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            max-width: 1920px;
+            margin:auto; 
+            
+        }
         &--image{
             width: 4.7rem;
             height: 5.7rem;

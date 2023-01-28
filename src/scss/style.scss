@@ -11,9 +11,12 @@
 //component
 @import 'components/carousel';
 @import 'components/ux/button';
+@import 'components/ux/modal';
 @import 'components/sliderHome';
 @import 'components/slidersProjets';
 @import 'components/slidersWork';
+@import 'components/connexion';
+@import 'components/rgpd';
 
 
 
@@ -26,6 +29,9 @@
 //page
 @import 'page/page';
 @import 'page/home';
+@import 'page/404';
+@import 'page/legals';
+@import 'page/about';
 
 
 

@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import Image from 'next/image'
-import { Button } from './ux'
+import { Button, Modal } from './ux'
 import { setHeader } from '@/redux/slice/headerStatu.Slice'
 import Link from 'next/link'
 import { useSelector, useDispatch } from 'react-redux'
+import Connexion from './Connexion'
 
 export default function Header() {
     const HeaderRedux = useSelector((state: any) => state.Header)
     const [isOpen, setIsOpen] = useState(false)
     const dispatch = useDispatch()
+
+    const [openModalConnexion, setOpenModalConnexion] = useState(false)
 
     useEffect(() => {
         setIsOpen(HeaderRedux.isOPen)
@@ -35,8 +38,9 @@ export default function Header() {
                     <ul className='header__content--nav__ul'>
                         <li>
                             <Link
-                                onClick={() => dispatch(setHeader(!isOpen))}
+                                onClick={() => dispatch(setHeader(false))}
                                 href='/#home'
+                                scroll={false}
                                 title="Lien qui redirige vers la page d'accueil"
                             >
                                 Accueil
@@ -44,8 +48,9 @@ export default function Header() {
                         </li>
                         <li>
                             <Link
-                                onClick={() => dispatch(setHeader(!isOpen))}
+                                onClick={() => dispatch(setHeader(false))}
                                 href='/#about'
+                                scroll={false}
                                 title='Lien qui redirige vers la section qui somme nous'
                             >
                                 A-propos
@@ -53,8 +58,9 @@ export default function Header() {
                         </li>
                         <li>
                             <Link
-                                onClick={() => dispatch(setHeader(!isOpen))}
+                                onClick={() => dispatch(setHeader(false))}
                                 href='/#projet'
+                                scroll={false}
                                 title='Lien qui redirige vers la section nos projets'
                             >
                                 projets
@@ -62,8 +68,9 @@ export default function Header() {
                         </li>
                         <li>
                             <Link
-                                onClick={() => dispatch(setHeader(!isOpen))}
+                                onClick={() => dispatch(setHeader(false))}
                                 href='/#methode'
+                                scroll={false}
                                 title='Lien qui redirige vers la section nos méthode de travail'
                             >
                                 méthode de travail
@@ -71,8 +78,9 @@ export default function Header() {
                         </li>
                         <li>
                             <Link
-                                onClick={() => dispatch(setHeader(!isOpen))}
+                                onClick={() => dispatch(setHeader(false))}
                                 href='/contact'
+                                scroll={false}
                                 title='Lien qui redirige vers la page de contact'
                             >
                                 contact
@@ -83,10 +91,20 @@ export default function Header() {
                 <Button
                     text='Connexion'
                     onClick={() => {
-                        dispatch(setHeader(!isOpen))
+                        dispatch(setHeader(false))
+                        setOpenModalConnexion(true)
                     }}
                 />
             </div>
-        </header>
+            {/* MODAL */}
+            <Modal
+                open={openModalConnexion}
+                transparent={true}
+                onClose={() => setOpenModalConnexion(false)}
+
+            >
+                <Connexion />
+            </Modal>
+        </header >
     )
 }

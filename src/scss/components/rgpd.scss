@@ -1,0 +1,28 @@
+.rgpd{
+    position: fixed;
+    background-color: var(--bk-color-primary);
+    width: 100%;
+    height: 200px;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.9rem;
+
+    h3{
+        color: var(--color-primary);
+
+    }
+    .paragraphe{
+        color: var(--color-primary);
+    }
+
+    &__action{
+        display:flex;
+        gap: 2.9rem;
+    }
+
+}

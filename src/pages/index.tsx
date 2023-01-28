@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Main, SlidersHome, SlidersProjets, SlidersWork } from '@/components'
 import Carousel, { CarouselItem } from '@/components/Carousel'
-import { Button } from '@/components/ux'
+import { Button, Modal } from '@/components/ux'
 import Image from 'next/image'
 
 import bg_remarque from '../images/cover/remarque.jpg'
@@ -12,6 +12,7 @@ import bg_maquette from '../images/cover/maquette.jpg'
 import bg_development from '../images/cover/development.jpg'
 import bg_lancement from '../images/cover/start.jpg'
 import bg_woman from '../images/cover/woman_projet.jpg'
+import Link from 'next/link'
 
 export default function Home() {
     return (
@@ -24,7 +25,7 @@ export default function Home() {
             Notre équipe expérimentée peut vous aider à atteindre vos objectifs. 
             Visitez notre site pour en savoir plus sur nos services et pour obtenir des conseils sur le développement.`}
         >
-            <section className='home__heroHome'>
+            <section className='home__heroHome' id='home'>
                 <Carousel
                     typeController='Circle'
                     btnEnabled={false}
@@ -66,7 +67,7 @@ export default function Home() {
                     </CarouselItem>
                 </Carousel>
             </section>
-            <section className='home__about ph-26'>
+            <section className='home__about ph-26' id='about'>
                 <h2 className='title'>Qui sommes nous</h2>
                 <div className='home__about--content'>
                     <Image
@@ -84,12 +85,12 @@ export default function Home() {
                             Native, Nextjs, WordPress, PrestaShop, Strapi, Firebase et Redux...
                         </p>
                         <span>
-                            <Button onClick={() => { }} text='En savoir plus' />
+                            <Link className='btn btn-primary' href="about" >En savoir plus</Link>
                         </span>
                     </div>
                 </div>
             </section>
-            <section className='home__projets ph-26'>
+            <section className='home__projets ph-26' id='projet'>
                 <h2 className='home__projets-title title'>Nos derniers projets</h2>
                 <Carousel
                     typeController='Circle'
@@ -139,7 +140,7 @@ export default function Home() {
                 </Carousel>
             </section>
 
-            <section className='home__work ph-26'>
+            <section className='home__work ph-26' id='methode'>
                 <h2 className='home__work-title title'>Nos méthode de travail</h2>
 
                 <Carousel
@@ -216,6 +217,8 @@ export default function Home() {
                     </CarouselItem>
                 </Carousel>
             </section>
+
+
         </Main>
     )
 }
