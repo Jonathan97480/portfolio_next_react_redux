@@ -1,0 +1,94 @@
+.contact{
+    padding: 1.2rem;
+     @include media(medium){
+        padding: 4.3rem;
+            
+    }
+   
+    &__content{
+        box-shadow: 0px 2px 24px rgba(0, 0, 0, 0.05);
+        max-width:38.7rem ;
+       
+        margin: auto;
+        margin-bottom: 4.3rem;
+        border-radius: 5px;
+        @include media(medium){
+            display: flex;
+            flex-direction: row;
+            max-width:90rem ;
+            gap: 3.4rem;
+            
+        }
+        &__cover{
+            display: none;
+            object-fit: cover;
+            max-width:51rem ;
+            height: auto;
+             @include media(medium){
+                display: inline-block;
+            }
+        }
+        &__right{
+
+                display : flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2.5rem;
+                 padding-top: 3.1rem;
+                 padding-bottom: 3.1rem;
+
+
+                &__title{
+                    text-align: center;
+                }
+
+              
+            }
+
+
+    }
+
+    &__reseaux{
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+        &__blackLink{
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+        &__title{
+            font-family: Roboto;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-secondary);
+        }
+        a{
+            text-decoration: none;
+            color: var(--color-secondary);
+            font-family: Roboto;
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+       
+
+            &:hover{
+                  color: var(--color-tertiary);
+                  text-decoration: underline;
+            }
+
+        }
+
+        &__icon{
+            font-size: 2.3rem;
+        }
+       
+    }
+}

@@ -94,6 +94,9 @@ const Carousel = ({ children, typeController = 'btn', btnEnabled = true, indicat
                                         </button></div> :
 
                                     <div
+                                        onClick={() => {
+                                            updateIndex(index)
+                                        }}
                                         className={`circle ${index === activeIndex ? 'active' : ''}`}
                                     ></div>
                             }

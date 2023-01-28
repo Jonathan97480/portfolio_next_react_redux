@@ -52,7 +52,7 @@ export default function Footer() {
                     </div>
                     <div className='footer__content--utiles'>
                         <p>liens utiles</p>
-                        <Link href='legales' scroll={false} title='Redirige ver les mentions légales'>
+                        <Link href='legales' title='Redirige ver les mentions légales'>
                             Mentions légales
                         </Link>
                         <Link href='legales#rgpd  scroll={false} ' title='Redirige ver les RGPD'>
@@ -61,7 +61,7 @@ export default function Footer() {
                     </div>
                     <div className='footer__content--contact'>
                         <p>Nous contacter</p>
-                        <Link href='contact' scroll={false} title='Redirige ver la page de contact'>
+                        <Link href='contact' title='Redirige ver la page de contact'>
                             Page de contact
                         </Link>
                         <a href='tel:+0692417574' title='Numero de téléphone pour joindre Jon_dev'>

@@ -20,23 +20,7 @@ export default function Main({ children, className, pageTitle, pageDescription }
         }
     }
 
-    useEffect(() => {
-        window.addEventListener('load', () => {
-            const curentID = window.location.href.split('#')[1]
-            if (curentID) {
-                setTimeout(() => {
-                    const curentElement = document.getElementById(curentID)
-                    if (curentElement) {
-                        curentElement.scrollIntoView()
-                    }
-                }, 1000)
-            }
-        })
 
-        return () => {
-            window.removeEventListener('load', () => {})
-        }
-    }, [])
 
     return (
         <>

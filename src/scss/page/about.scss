@@ -6,6 +6,9 @@
     justify-content: center;
     max-width: 1920px;
     margin: auto;
+    strong{
+        font-weight: 700;
+    }
 
     &__title{
         margin-bottom: 4.3rem;
@@ -27,6 +30,10 @@
         align-items: center;
         justify-content: center;
         gap: 2.4rem;
+        @include media(medium){
+            width: 70%;
+
+        }
     }
 
 

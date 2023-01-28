@@ -80,7 +80,7 @@ export default function Header() {
                             <Link
                                 onClick={() => dispatch(setHeader(false))}
                                 href='/contact'
-                                scroll={false}
+
                                 title='Lien qui redirige vers la page de contact'
                             >
                                 contact
