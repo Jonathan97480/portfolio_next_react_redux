@@ -1,4 +1,4 @@
-import { Technologies } from '@/pages/api/hello'
+import { Technologies } from '@/pages/api/projects'
 import Image from 'next/image'
 
 interface SlidersProjetsProps {

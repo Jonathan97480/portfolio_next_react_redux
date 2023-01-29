@@ -16,7 +16,7 @@ import bg_development from '../images/cover/development.jpg'
 import bg_lancement from '../images/cover/start.jpg'
 import bg_woman from '../images/cover/woman_projet.webp'
 import Link from 'next/link'
-import { getProjects, Project } from './api/hello'
+import { getProjects, Project } from './api/projects'
 import { setProject } from '@/redux/slice/projectSlice'
 
 

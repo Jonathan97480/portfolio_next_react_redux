@@ -1,4 +1,4 @@
-import { Project } from '@/pages/api/hello'
+import { Project } from '@/pages/api/projects'
 import { createSlice } from '@reduxjs/toolkit'
 
 export interface ProjectState {
