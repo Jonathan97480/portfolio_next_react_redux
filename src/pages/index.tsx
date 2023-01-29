@@ -3,18 +3,29 @@ import { Main, SlidersHome, SlidersProjets, SlidersWork } from '@/components'
 import Carousel, { CarouselItem } from '@/components/Carousel'
 import { Button, Modal } from '@/components/ux'
 import Image from 'next/image'
+import { useState } from 'react'
 
-import bg_remarque from '../images/cover/remarque.jpg'
+import bg_remarque from '../images/cover/remarque.webp'
 import bg_services from '../images/cover/services.jpg'
-import bg_projet from '../images/cover/projet.jpg'
+import bg_projet from '../images/cover/projet.webp'
 import bg_wireframe from '../images/cover/wireframe.jpg'
-import bg_maquette from '../images/cover/maquette.jpg'
+import bg_maquette from '../images/cover/maquette.webp'
 import bg_development from '../images/cover/development.jpg'
 import bg_lancement from '../images/cover/start.jpg'
-import bg_woman from '../images/cover/woman_projet.jpg'
+import bg_woman from '../images/cover/woman_projet.webp'
 import Link from 'next/link'
+import { getProjects, Project } from './api/hello'
+
 
 export default function Home() {
+
+    const [projects, setProjects] = useState<Project[]>([])
+
+    getProjects().then((res) => {
+
+        setProjects(res)
+
+    })
     return (
         <Main
             pageTitle={"Page d'accueille"}
@@ -31,6 +42,7 @@ export default function Home() {
                     btnEnabled={false}
                     delay={10000}
                 >
+
                     <CarouselItem>
                         <SlidersHome
                             img={{
@@ -97,46 +109,30 @@ export default function Home() {
                     btnEnabled={false}
                     delay={5000}
                 >
-                    <CarouselItem>
-                        <SlidersProjets
-                            img={{
-                                src: bg_remarque.src,
-                                alt: 'logo du site',
-                            }}
-                            title={'Devis power'}
-                            text={'lorem ipsum dolor sit amet consectetur adipisicing elit.'}
-                        />
-                    </CarouselItem>
-                    <CarouselItem>
-                        <SlidersProjets
-                            img={{
-                                src: bg_remarque.src,
-                                alt: 'logo du site',
-                            }}
-                            title={'JCVConsult'}
-                            text={'lorem ipsum dolor sit amet consectetur adipisicing elit.'}
-                        />
-                    </CarouselItem>
-                    <CarouselItem>
-                        <SlidersProjets
-                            img={{
-                                src: bg_remarque.src,
-                                alt: 'logo du site',
-                            }}
-                            title={'Oasis Radio'}
-                            text={'lorem ipsum dolor sit amet consectetur adipisicing elit.'}
-                        />
-                    </CarouselItem>
-                    <CarouselItem>
-                        <SlidersProjets
-                            img={{
-                                src: bg_remarque.src,
-                                alt: 'logo du site',
-                            }}
-                            title={'lgo'}
-                            text={'lorem ipsum dolor sit amet consectetur adipisicing elit.'}
-                        />
-                    </CarouselItem>
+                    {
+                        projects.map((project: Project, index) => {
+                            return (
+                                <CarouselItem key={index + '-project'}>
+                                    <SlidersProjets
+                                        img={{
+                                            src: project.cover,
+                                            alt: 'logo du site',
+                                        }}
+                                        title={project.title}
+                                        text={project.description}
+                                        tech={project.technologies}
+                                        links={{
+                                            ios: project.ios_url,
+                                            android: project.android_url,
+                                            site: project.site_url,
+                                        }}
+                                    />
+                                </CarouselItem>
+                            )
+                        })
+                    }
+
+
                 </Carousel>
             </section>
 

@@ -5,8 +5,7 @@ module.exports={
   swcMinify: true,
 
   images: {
-    domains: ['api.jcvconsult.re'
-    ],
+    domains: ['api.jon-dev.fr'],
   },
   i18n: {
     locales: ["fr"],

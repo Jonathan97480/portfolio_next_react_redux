@@ -1,3 +1,4 @@
+import { Technologies } from '@/pages/api/hello'
 import Image from 'next/image'
 
 interface SlidersProjetsProps {
@@ -5,19 +6,17 @@ interface SlidersProjetsProps {
         src: string
         alt: string
     }
-    icon?: {
-        src: string
-        alt: string
-    }
+    tech: Technologies[]
     title: string
     text: string
-    links?: {
-        name: string
-        url: string
-    }[]
+    links: {
+        android: string | null | undefined
+        ios: string | null | undefined
+        site: string | null | undefined
+    }
 }
 
-export default function SlidersProjets({ img, title, text }: SlidersProjetsProps) {
+export default function SlidersProjets({ img, title, text, links, tech }: SlidersProjetsProps) {
     return (
         <div className='slidersProjets'>
             <h2 className='slidersProjets__title'>{title}</h2>
@@ -32,31 +31,36 @@ export default function SlidersProjets({ img, title, text }: SlidersProjetsProps
                 <div className='slidersProjets__content-info'>
                     <h3>Technologies utiliser </h3>
                     <span>
-                        <Image
-                            src={require('../images/icons/strapi.png')}
-                            alt='logo du site'
-                            width={50}
-                            height={50}
-                        />
-                        <Image
-                            src={require('../images/icons/strapi.png')}
-                            alt='logo du site'
-                            width={50}
-                            height={50}
-                        />
-                        <Image
-                            src={require('../images/icons/strapi.png')}
-                            alt='logo du site'
-                            width={50}
-                            height={50}
-                        />
+                        {
+                            tech.map((item) => {
+                                return <Image
+                                    key={item.name + item.id}
+                                    src={item.icon}
+                                    alt={item.name}
+                                    width={50}
+                                    height={50}
+                                />
+                            })
+                        }
+
                     </span>
                     <div>
                         <h4>Liens utiles </h4>
                         <span>
-                            <a href=''>Android</a>
-                            <a href=''>IPhone</a>
-                            <a href=''>Site</a>
+                            {
+                                links.android && <a href={links.android}>Android</a>
+                            }
+                            {
+                                links.ios && <a href={links.ios}>IPhone</a>
+
+                            }
+                            {
+                                links.site && <a href={links.site} >Site</a>
+                            }
+
+
+
+
                         </span>
                     </div>
                 </div>

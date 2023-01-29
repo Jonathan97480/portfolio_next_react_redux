@@ -1,9 +1,19 @@
-.title{
+.title, .title--small,.title--medium{
     font-family: Roboto_slab;
     font-weight: 700;
     font-size: 4rem;
     color: var(--color-secondary);
+    text-align: center;
+
+    &--small{
+        font-size: 1.4rem;
+    }
+
+    &--medium{
+        font-size: 3.2rem;
+    }
 }
+
 .paragraphe{
     font-family: Roboto;
     font-weight: 400;
