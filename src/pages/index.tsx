@@ -1,9 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unescaped-entities */
 import { Main, SlidersHome, SlidersProjets, SlidersWork } from '@/components'
 import Carousel, { CarouselItem } from '@/components/Carousel'
 import { Button, Modal } from '@/components/ux'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 
 import bg_remarque from '../images/cover/remarque.webp'
 import bg_services from '../images/cover/services.jpg'
@@ -15,17 +17,33 @@ import bg_lancement from '../images/cover/start.jpg'
 import bg_woman from '../images/cover/woman_projet.webp'
 import Link from 'next/link'
 import { getProjects, Project } from './api/hello'
+import { setProject } from '@/redux/slice/projectSlice'
 
 
 export default function Home() {
 
+    const dispatch = useDispatch()
+
     const [projects, setProjects] = useState<Project[]>([])
+    const projectsRedux = useSelector((state: any) => state.Project.project)
 
-    getProjects().then((res) => {
 
-        setProjects(res)
+    useEffect(() => {
 
-    })
+        if (projectsRedux.length <= 0) {
+
+            getProjects().then((res) => {
+
+                dispatch(setProject(res))
+                setProjects(res)
+            })
+        } else {
+            setProjects(projectsRedux)
+        }
+
+    }, [projectsRedux])
+
+
     return (
         <Main
             pageTitle={"Page d'accueille"}
