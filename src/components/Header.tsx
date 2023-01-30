@@ -7,8 +7,10 @@ import Link from 'next/link'
 import { useSelector, useDispatch } from 'react-redux'
 import Connexion from './Connexion'
 
+
 export default function Header() {
     const HeaderRedux = useSelector((state: any) => state.Header)
+    const ClientRedux = useSelector((state: any) => state.Client)
     const [isOpen, setIsOpen] = useState(false)
     const dispatch = useDispatch()
 
@@ -27,13 +29,15 @@ export default function Header() {
                 />
             </div>
             <div className='header__content'>
-                <Image
-                    className='header__content--image'
-                    src={require('../images/icons/logo.png')}
-                    alt='logo du site'
-                    width={47}
-                    height={57}
-                />
+                <Link href='/'>
+                    <Image
+                        className='header__content--image'
+                        src={require('../images/icons/logo.png')}
+                        alt='logo du site'
+                        width={47}
+                        height={57}
+                    />
+                </Link>
                 <nav className='header__content--nav'>
                     <ul className='header__content--nav__ul'>
                         <li>
@@ -88,13 +92,18 @@ export default function Header() {
                         </li>
                     </ul>
                 </nav>
-                <Button
+                {ClientRedux.client === null ? <Button
                     text='Connexion'
                     onClick={() => {
                         dispatch(setHeader(false))
                         setOpenModalConnexion(true)
                     }}
-                />
+                /> : <Link className='header__btnClient btn btn-primary' href='/client' title='Acceder à votre page client qui contient toute les informations sur votre projet'>
+                    <Image src={require('../images/icons/cliente.png')} width={34} height={34} loading='lazy' alt='' />
+                    <span>Voir ma page client</span>
+                </Link>
+
+                }
             </div>
             {/* MODAL */}
             <Modal

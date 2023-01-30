@@ -1,4 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+export const BASE_API_URL = "https://api.jon-dev.fr"
+export const BASE_URL = "https://api.jon-dev.fr"
+export const AUTH = "/api/auth/local"
+export const USER_COOKIE = "user"
 
 export interface Technologies {
     id: string
@@ -20,9 +24,9 @@ export interface Project {
 
 export const getProjects = async () => {
 
-    const BaseUrl = "https://api.jon-dev.fr"
 
-    const res = await fetch(BaseUrl + '/api/projects?populate[0]=technologies.Icon&populate[1]=Cover', {
+
+    const res = await fetch(BASE_API_URL + '/api/projects?populate[0]=technologies.Icon&populate[1]=Cover', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -37,7 +41,7 @@ export const getProjects = async () => {
             title: project.attributes.Title,
             description: project.attributes.Description,
             shortDescription: project.attributes.Shot_description,
-            cover: BaseUrl + project.attributes.Cover.data.attributes.url,
+            cover: BASE_URL + project.attributes.Cover.data.attributes.url,
             site_url: project.attributes.Site_url,
             android_url: project.attributes.Android_url,
             ios_url: project.attributes.IPhone_url,
@@ -48,7 +52,7 @@ export const getProjects = async () => {
             return {
                 id: tech.id,
                 name: tech.attributes.Title,
-                icon: BaseUrl + tech.attributes.Icon.data.attributes.url
+                icon: BASE_URL + tech.attributes.Icon.data.attributes.url
             }
         })
         p.technologies = t

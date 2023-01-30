@@ -19,6 +19,16 @@ transition: all 0.3s ease-in-out;
         animation: closeModalMobile 0.6s ease-in-out forwards;
     
     }
+
+    &-error{
+        color: var(--error-color-primary)!important;
+        font-weight: 600;
+        font-size: 1.8rem !important;
+        padding: 0.5rem 0.5rem;
+        background-color: var(--color-primary);
+        text-decoration: none!important;
+        transition: all 0.3s ease-in-out;
+    }
     &__cover{
         display: none;
         @include media(medium){

@@ -1,9 +1,16 @@
 import Image from "next/image"
+import { useDispatch } from 'react-redux';
+import { deleteCookie } from 'cookies-next';
+import { USER_COOKIE } from "@/pages/api/projects";
+import { clearClient } from "@/redux/slice/clientSlice";
+import { useRouter } from "next/router";
 
 
 
 export default function DashboardClient({ params, setView }: { params: any, setView: (view: 'historique' | 'projet' | '', params: any) => void }) {
 
+    const dispatch = useDispatch();
+    const { push, query, isReady } = useRouter();
 
     return (
         <>
@@ -83,9 +90,16 @@ export default function DashboardClient({ params, setView }: { params: any, setV
                     <p>Cahier des charges</p>
                 </a>
             </div>
-            <button className="client__left__btnLogout">
+            <button className="client__left__btnLogout" onClick={
+                () => {
+                    deleteCookie(USER_COOKIE);
+                    dispatch(clearClient(true));
+                    push('/');
+
+                }
+            }>
                 <Image src={require('../images/icons/cliente.png')} width={34} height={34} alt="" />
-                <p>Déconnectons</p>
+                <p>Déconnexion</p>
             </button>
 
         </>
