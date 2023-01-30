@@ -88,10 +88,10 @@ export default function Connexion({ onClose, isClose = false }: ConnexionProps) 
                                 <BsChevronDoubleUp className='connexion__content__infoClient__chevron' onClick={() => handlerCloseInfo()} />
                             </div>
                         </div>
-                        <input type="email" placeholder="Email" required name="email" />
+                        <input type="email" placeholder="Email" required name="email" autoComplete='username' />
 
                         <div className='connexion__content__form__showPassword'>
-                            <input type={`${showPassword ? 'text' : 'password'}`} placeholder="Mot de passe" required name="password" />
+                            <input type={`${showPassword ? 'text' : 'password'}`} placeholder="Mot de passe" required name="password" autoComplete='current-password' />
                             <div>
                                 <input lang='show_password' type="checkbox" onChange={(value) => {
                                     if (value.target.checked) {

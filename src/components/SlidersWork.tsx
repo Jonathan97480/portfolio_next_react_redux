@@ -19,6 +19,7 @@ export default function SlidersWork({ img, title, text, slideNumber }: SlidersWo
                     <p>{slideNumber}</p>
                 </span>
                 <Image
+                    loading='lazy'
                     className='cardWork__cover'
                     src={img.src}
                     alt={img.alt}

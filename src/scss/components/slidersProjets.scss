@@ -31,14 +31,14 @@
             gap: 2.5rem;
         }
         &-cover{
-            width: 95%;
+            max-width: 95%;
             margin: auto;
             border-radius: 2rem;
             object-fit: cover;
-               @include media(medium){
-        width: 50%;
+            @include media(medium){
+                max-width: 50%;
 
-        }
+            }
         }
 
         &-info{
@@ -47,7 +47,6 @@
             align-items: flex-start;
             gap: 3.3rem; 
           
-
             h3,h4{
                  
             font-family: Roboto;

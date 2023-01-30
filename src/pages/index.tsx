@@ -7,14 +7,14 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import bg_remarque from '../images/cover/remarque.webp'
+import bg_remarque from '../images/cover/remarque.jpg'
 import bg_services from '../images/cover/services.jpg'
-import bg_projet from '../images/cover/projet.webp'
+import bg_projet from '../images/cover/projet.jpg'
 import bg_wireframe from '../images/cover/wireframe.jpg'
-import bg_maquette from '../images/cover/maquette.webp'
+import bg_maquette from '../images/cover/maquette.jpg'
 import bg_development from '../images/cover/development.jpg'
 import bg_lancement from '../images/cover/start.jpg'
-import bg_woman from '../images/cover/woman_projet.webp'
+import bg_woman from '../images/cover/woman_projet.jpg'
 import Link from 'next/link'
 import { getProjects, Project } from './api/projects'
 import { setProject } from '@/redux/slice/projectSlice'
@@ -68,7 +68,7 @@ export default function Home() {
                                 alt: 'logo du site',
                             }}
                             title={'Vous avez un projet'}
-                            text={`Lorem ipsum dolor sit amet consectetur. Aliquam tellus at non ac nibh ut.Ultrices mollis facilisi eu pellentesque id tristique quam et tortor.Lacinia elit felis hendrerit aliquam.`}
+                            text={`Notre équipe est là pour vous accompagner dans la concrétisation de vos projets de site web et d'application mobile. Nous mettons notre expertise et notre engagement à votre disposition pour vous aider à réaliser vos objectifs avec succès. Contactez-nous dès maintenant pour en savoir plus sur nos services.`}
                         />
                     </CarouselItem>
                     <CarouselItem>
@@ -77,9 +77,9 @@ export default function Home() {
                                 src: bg_services.src,
                                 alt: 'logo du site',
                             }}
-                            title={'Notre xpérience à votre service'}
+                            title={'Notre expérience à votre service'}
                             text={
-                                'Lorem ipsum dolor sit amet consectetur. Aliquam tellus at non ac nibh ut. Ultrices mollis facilisi eu pellentesque id tristique quam et tortor. Lacinia elit felis hendrerit aliquam.'
+                                `Notre équipe est fière de partager son expertise et son savoir-faire avec nos clients. Nous avons accumulé de nombreuses années d'expérience dans le développement de sites web et d'applications mobiles pour des entreprises de toutes tailles. Cette expérience nous permet de comprendre les besoins de nos clients et de leur offrir des solutions personnalisées pour répondre à leurs attentes.`
                             }
                         />
                     </CarouselItem>
@@ -91,7 +91,7 @@ export default function Home() {
                             }}
                             title={'Faite vous remarqué'}
                             text={
-                                'Lorem ipsum dolor sit amet consectetur. Aliquam tellus at non ac nibh ut. Ultrices mollis facilisi eu pellentesque id tristique quam et tortor. Lacinia elit felis hendrerit aliquam.'
+                                `Faites-vous remarquer" en optant pour une présence en ligne professionnelle et moderne. Nous comprenons l'importance de la première impression en ligne pour les entreprises et les marques. C'est pourquoi nous mettons tout en œuvre pour développer des sites web et des applications mobiles qui reflètent votre image de marque de manière cohérente et attrayante. Avec une expérience utilisateur fluide et une interface intuitive, nous vous aidons à vous démarquer sur un marché en constante évolution. `
                             }
                         />
                     </CarouselItem>

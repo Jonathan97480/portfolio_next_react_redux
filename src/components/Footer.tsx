@@ -1,6 +1,6 @@
 import { BsFacebook, BsLinkedin, BsTwitter } from 'react-icons/bs'
 import Link from 'next/link'
-import Rgp from './Rgp'
+
 
 export default function Footer() {
     return (
@@ -14,7 +14,7 @@ export default function Footer() {
                                 <li>
                                     <Link
                                         href='/#home'
-                                        scroll={false}
+
                                         title="Lien qui redirige vers la page d'accueil"
                                     >
                                         Accueil
@@ -55,7 +55,7 @@ export default function Footer() {
                         <Link href='legales' title='Redirige ver les mentions légales'>
                             Mentions légales
                         </Link>
-                        <Link href='legales#rgpd  scroll={false} ' title='Redirige ver les RGPD'>
+                        <Link href='legales#rgpd  scroll={false} ' scroll={false} title='Redirige ver les RGPD'>
                             RGPD
                         </Link>
                     </div>

@@ -1,5 +1,7 @@
 import { Technologies } from '@/pages/api/projects'
 import Image from 'next/image'
+import { Modal } from './ux'
+import { AiFillCloseCircle } from 'react-icons/ai';
 
 interface SlidersProjetsProps {
     img: {
@@ -27,6 +29,7 @@ export default function SlidersProjets({ img, title, text, links, tech }: Slider
                     alt='logo du site'
                     width={397}
                     height={252}
+                    loading='lazy'
                 />
                 <div className='slidersProjets__content-info'>
                     <h3>Technologies utiliser </h3>
@@ -34,11 +37,14 @@ export default function SlidersProjets({ img, title, text, links, tech }: Slider
                         {
                             tech.map((item) => {
                                 return <Image
+                                    loading='lazy'
                                     key={item.name + item.id}
                                     src={item.icon}
                                     alt={item.name}
                                     width={50}
                                     height={50}
+
+
                                 />
                             })
                         }
@@ -65,6 +71,46 @@ export default function SlidersProjets({ img, title, text, links, tech }: Slider
                     </div>
                 </div>
             </div>
+            {/* <Modal open={true} onClose={
+                () => {
+                    console.log('close')
+                }
+            }
+
+                transparent={false}
+            >
+                <div>
+                    <h2>{title}</h2>
+                    <AiFillCloseCircle className='connexion__iconClose' onClick={() => { }} />
+                    <Image
+
+                        src={img.src}
+                        alt='logo du site'
+                        width={397}
+                        height={252}
+                    />
+                    <div>
+                        <span>
+                            {
+                                tech.map((item) => {
+                                    return <Image
+                                        key={item.name + item.id}
+                                        src={item.icon}
+                                        alt={item.name}
+                                        width={50}
+                                        height={50}
+                                    />
+                                })
+                            }
+
+                        </span>
+                        <p>
+                            {text}
+                        </p>
+                    </div>
+                </div>
+
+            </Modal> */}
         </div>
     )
 }

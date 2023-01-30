@@ -1,14 +1,40 @@
 .contact{
+    
+
     padding: 1.2rem;
      @include media(medium){
         padding: 4.3rem;
             
     }
+        &__success{  
+            color: var(--success-color-primary);
+        }
+
+         &__error{
+           
+            color: var(--error-color-primary);
+        }
+    &__message{
+        background-color: var(--bk-color-secondary);
+        max-width: 50rem;
+        margin: auto;
+        margin-top: 4.6rem;
+        margin-bottom: 4.6rem;
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        gap: 2.5rem;
+        padding: 2.5rem;
+        border-radius: 25px;
+        box-shadow: 0px 2px 24px rgba(0, 0, 0, 0.05);
+
+        
+    }
    
     &__content{
         box-shadow: 0px 2px 24px rgba(0, 0, 0, 0.05);
         max-width:38.7rem ;
-       
+        position: relative;
         margin: auto;
         margin-bottom: 4.3rem;
         border-radius: 5px;
@@ -29,7 +55,7 @@
             }
         }
         &__right{
-
+               
                 display : flex;
                 flex-direction: column;
                 justify-content: center;
@@ -91,4 +117,33 @@
         }
        
     }
+
+    &__submit{
+        height: 100%;
+        border-radius: 25px;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.5);
+
+        &__loading{
+            animation: loaderAnimation 1.5s linear infinite;
+            color: var(--color-primary);
+            font-size: 5rem;
+            z-index:1;
+        }
+        p{
+        
+            font-weight: 700;
+            color: var(--color-primary);
+          
+        }
+    }
+
+
 }

@@ -11,5 +11,14 @@
 --error-color-primary: #EE4848;
 --success-color-primary: #74E994;
 
-
+ @keyframes loaderAnimation{
+     0%{ 
+        -webkit-transform: rotate(0deg); 
+        tranform: rotate(0deg);
+    }
+	100%{ 
+        -webkit-transform: rotate(360deg); 
+        tranform: rotate(360deg);
+    }
+  }
 }
