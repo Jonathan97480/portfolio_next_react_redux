@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { BsFacebook, BsLinkedin, BsTwitter } from 'react-icons/bs';
 import Image from "next/image";
 import { BiLoader } from 'react-icons/bi';
+import { event } from "nextjs-google-analytics";
 
 interface SubmitAction {
     submit: boolean,
@@ -25,20 +26,20 @@ export default function Contact() {
         errorMessage: "L'envoi du formulaire à échoué veuillez réessayé plus tard ou contacter nous par téléphone"
 
     })
-    const submitForm = (event: any) => {
-        event.preventDefault();
+    const submitForm = (_event: any) => {
+        _event.preventDefault();
 
         setSubmitAction({ ...submitAction, submit: true })
 
         const form: HTMLFormElement = document.getElementById("my-form") as HTMLFormElement;
-        const data = new FormData(event.target);
+        const data = new FormData(_event.target);
 
 
         const newData = new FormData();
         newData.append("email", data.get("email") as string);
         newData.append("message", data.get("name") as string + " <br>" + data.get("message") as string);
 
-        fetch(event.target.action, {
+        fetch(_event.target.action, {
             method: form.method,
             body: data,
             headers: {
@@ -47,14 +48,26 @@ export default function Contact() {
         }).then(response => {
             if (response.ok) {
                 setSubmitAction({ ...submitAction, submit: false, success: true })
+                event("submit_form", {
+                    category: "Contact",
+                    label: `message envoyer avec succès par ${data.get("name") as string} `,
+                });
                 form.reset()
             } else {
                 response.json().then(data => {
                     setSubmitAction({ ...submitAction, submit: false, error: true })
+                    event("submit_form", {
+                        category: "Contact",
+                        label: `message envoi erreur par ${data.get("name") as string} `,
+                    });
                 })
             }
         }).catch(error => {
             setSubmitAction({ ...submitAction, submit: false, error: true })
+            event("submit_form", {
+                category: "Contact",
+                label: `message envoi erreur par ${data.get("name") as string} `,
+            });
         });
     }
 
@@ -62,8 +75,8 @@ export default function Contact() {
 
     return (
         <Main
-            pageTitle="Contact"
-            pageDescription="Contact"
+            pageTitle="Page de contact"
+            pageDescription={`Besoin de nous contacter? Vous pouvez nous trouver sous les noms d'utilisateur "jon dev", "jon-dev", ou "jon.dev".N'hésitez pas à nous envoyer un message si vous avez des questions ou des commentaires. Nous sommes là pour vous aider!`}
             className="contact"
         >
             {
@@ -114,17 +127,21 @@ export default function Contact() {
             <div className="contact__reseaux" >
                 <h2 className="contact__reseaux__title ">Suivez nous sur les réseaux sociaux</h2>
                 <div className="contact__reseaux__blackLink">
-                    <a href="https://www.linkedin.com/in/gauvin-jonathan" title="lien ver LinkedIn" >
+                    <a href="https://www.linkedin.com/in/gauvin-jonathan" target={'_blank'}
+                        rel='noreferrer'
+                        title="lien ver LinkedIn" >
                         <BsLinkedin className="contact__reseaux__icon" /> <span>LinkedIn</span>
                     </a>
-                    <a href="https://www.facebook.com/jon.dev974" title="lien ver Facebook">
+                    <a href="https://www.facebook.com/jon.dev974" target={'_blank'}
+                        rel='noreferrer' title="lien ver Facebook">
                         <BsFacebook className="contact__reseaux__icon" /> <span>Facebook</span>
                     </a>
-                    <a href="https://twitter.com/jonathanfrt9741" title="lien ver Twitter">
+                    <a href="https://twitter.com/jonathanfrt9741" target={'_blank'}
+                        rel='noreferrer' title="lien ver Twitter">
                         <BsTwitter className="contact__reseaux__icon" /> <span>Twitter</span>
                     </a>
                 </div>
             </div>
-        </Main>
+        </Main >
     )
 }

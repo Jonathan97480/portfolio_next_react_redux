@@ -3,6 +3,7 @@ export const BASE_API_URL = "https://api.jon-dev.fr"
 export const BASE_URL = "https://api.jon-dev.fr"
 export const AUTH = "/api/auth/local"
 export const USER_COOKIE = "user"
+export const RGPD_COOKIE = "rgpd"
 
 export interface Technologies {
     id: string

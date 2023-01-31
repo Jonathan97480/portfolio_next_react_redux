@@ -49,7 +49,6 @@ export default function Home() {
             pageTitle={"Page d'accueille"}
             className='home hp-m'
             pageDescription={`Bienvenue sur Jon_dev, votre destination pour tout ce qui concerne le développement web et mobile.
- 
             Nous offrons des services professionnels pour créer et améliorer vos sites web et applications. 
             Notre équipe expérimentée peut vous aider à atteindre vos objectifs. 
             Visitez notre site pour en savoir plus sur nos services et pour obtenir des conseils sur le développement.`}
@@ -98,7 +97,7 @@ export default function Home() {
                 </Carousel>
             </section>
             <section className='home__about ph-26' id='about'>
-                <h2 className='title'>Qui sommes nous</h2>
+                <h1 className='title'>Qui sommes nous</h1>
                 <div className='home__about--content'>
                     <Image
                         src={require('../images/cover/about.jpg')}

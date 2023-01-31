@@ -6,10 +6,10 @@ import { Button } from './ux';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { BsChevronDoubleUp } from 'react-icons/bs';
 import { BiLoader } from 'react-icons/bi';
-import { AUTH, BASE_API_URL, USER_COOKIE } from '@/pages/api/projects';
+import { AUTH, BASE_API_URL, RGPD_COOKIE, USER_COOKIE } from '@/pages/api/projects';
 import { useDispatch } from 'react-redux';
 import { Client, setClient } from '@/redux/slice/clientSlice';
-import { setCookie, getCookie } from 'cookies-next';
+import { setCookie, getCookie, hasCookie } from 'cookies-next';
 
 
 
@@ -40,6 +40,10 @@ export default function Connexion({ onClose, isClose = false }: ConnexionProps) 
             if (onClose)
                 onClose();
             setIsAnimeClose(false);
+            /* clear fomr and error message */
+            const f = document.getElementById('my-form-login') as HTMLFormElement;
+            f.reset();
+            setSubmit({ ...submit, submit: false, error: false, message: '' });
         }, 500);
     }
 
@@ -50,6 +54,17 @@ export default function Connexion({ onClose, isClose = false }: ConnexionProps) 
         }
 
     }, [isClose]);
+
+    useEffect(() => {
+
+        if (hasCookie(USER_COOKIE)) {
+            const user = JSON.stringify(getCookie(USER_COOKIE));
+            console.log("USER COOKI", user);
+            if (user) {
+                dispatch(setClient(JSON.parse(user) as Client));
+            }
+        }
+    }, []);
 
     const handlerOpenInfo = () => {
         setIsInoOpen(true);
@@ -81,6 +96,7 @@ export default function Connexion({ onClose, isClose = false }: ConnexionProps) 
 
 
 
+
         const user = await response.json()
 
         if (user.error) {
@@ -103,11 +119,27 @@ export default function Connexion({ onClose, isClose = false }: ConnexionProps) 
                 jwt: user.jwt,
             }
             if (!curentUser.blocked) {
+
                 dispatch(setClient(curentUser));
-                setCookie(USER_COOKIE, JSON.stringify(curentUser));
+
+                if (hasCookie(RGPD_COOKIE) && getCookie(RGPD_COOKIE) === true) {
+
+                    setCookie(USER_COOKIE, JSON.stringify(curentUser), {
+
+                        expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
+
+                    });
+
+                    sessionStorage.setItem(USER_COOKIE, JSON.stringify(curentUser));
+
+                } else {
+
+                    sessionStorage.setItem(USER_COOKIE, JSON.stringify(curentUser));
+                }
+
                 setSubmit({ ...submit, error: false, message: '', submit: false });
                 /* clear input form */
-                const form = document.getElementById("my-form") as HTMLFormElement;
+                const form = document.getElementById("my-form-login") as HTMLFormElement;
                 if (form) {
                     form.reset();
                 }
@@ -132,8 +164,8 @@ export default function Connexion({ onClose, isClose = false }: ConnexionProps) 
                     <div className={` connexion__content__loader ${submit.submit ? 'connexion__content__loader__active' : ""} `}>
                         <BiLoader className='connexion__content__loader__icon' />
                     </div>
-                    <h2 className='connexion__content__title' >Connexion</h2>
-                    <form className='connexion__content__form' onSubmit={(e) => SubmitConnexion(e)} id="my-form">
+                    <span className='connexion__content__title' >Connexion</span>
+                    <form className='connexion__content__form' onSubmit={(e) => SubmitConnexion(e)} id="my-form-login">
                         <span className={`connexion__content__message ${submit.error ? 'connexion-error' : 'connexion-success'}`} > {submit.message}  </span>
                         <div>
                             <span onClick={() => handlerOpenInfo()}>Je suis client ou trouver mes identifiants?</span>
@@ -151,7 +183,7 @@ export default function Connexion({ onClose, isClose = false }: ConnexionProps) 
                         <div className='connexion__content__form__showPassword'>
                             <input type={`${showPassword ? 'text' : 'password'}`} placeholder="Mot de passe" required name="password" autoComplete='current-password' />
                             <div>
-                                <input lang='show_password' type="checkbox" onChange={(value) => {
+                                <input type="checkbox" onChange={(value) => {
                                     if (value.target.checked) {
                                         setShowPassword(true);
                                     } else {
@@ -161,7 +193,7 @@ export default function Connexion({ onClose, isClose = false }: ConnexionProps) 
                                 <label htmlFor="show_password">Afficher le mot de passe</label>
                             </div>
                         </div>
-                        <input className='btn btn-primary' type="submit" value="Se connecter" />
+                        <input id='show_password' className='btn btn-primary' type="submit" value="Se connecter" />
 
                     </form>
                 </div>

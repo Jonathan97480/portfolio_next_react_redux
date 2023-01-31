@@ -26,10 +26,13 @@ export default function Main({ children, className, pageTitle, pageDescription }
         <>
             <Head>
                 <title>{pageTitle}</title>
+                <meta name="author" content="Gauvin Jonathan"></meta>
                 <meta name='description' content={pageDescription} />
                 <meta name='og:title' content={pageTitle} />
                 <meta property='og:description' content={pageDescription} />
-                <meta property='og:image' content='../images/icons/logo.png' />
+                <meta property='og:image' content={require('../images/icons/logo.png')} />
+                <meta name="twitter:title" content={pageTitle}></meta>
+                <link rel="shortcut icon" href="favicon.ico" type={require('../images/icons/favicon.ico')}></link>
             </Head>
             <div onClick={headerClose} className={className}>
                 {children}

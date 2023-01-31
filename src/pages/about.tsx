@@ -6,8 +6,8 @@ import Image from "next/image";
 export default function About() {
     return (
         <Main
-            pageTitle="About"
-            pageDescription="About"
+            pageTitle="Page À propos"
+            pageDescription="Cette page vous donne un aperçu de qui nous sommes et de ce que nous faisons. Nous aimons partager notre histoire, nos valeurs et nos objectifs avec nos utilisateurs. Vous découvrirez également des informations sur notre équipe, nos réalisations et nos projets futurs. Nous sommes fiers de notre travail et nous espérons que vous apprécierez en apprendre davantage sur nous. N'hésitez pas à nous contacter si vous avez des questions ou des commentaires."
             className="about"
         >
             <h1 className="about__title title">À-propos de nous</h1>

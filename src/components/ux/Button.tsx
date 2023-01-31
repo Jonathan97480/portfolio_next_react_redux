@@ -22,7 +22,7 @@ export default function Button({ text, onClick, disabled = false, inverted = fal
 
     return (
         <button className={buttonStyle} onClick={onClick}>
-            <p>{text}</p>
+            {text}
         </button>
     )
 }

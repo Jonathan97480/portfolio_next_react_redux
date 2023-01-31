@@ -16,7 +16,7 @@ export default function SlidersWork({ img, title, text, slideNumber }: SlidersWo
         <div className='sliderWork'>
             <div className='cardWork'>
                 <span className='cardWork__numberMobile'>
-                    <p>{slideNumber}</p>
+                    {slideNumber}
                 </span>
                 <Image
                     loading='lazy'
@@ -28,7 +28,7 @@ export default function SlidersWork({ img, title, text, slideNumber }: SlidersWo
                 />
                 <div className='cardWork__content'>
                     <span className='cardWork__content-number'>
-                        <p>{slideNumber}</p>
+                        {slideNumber}
                     </span>
                     <h2 className='cardWork__content-title'>{title}</h2>
                     <p className='cardWork__content-text paragraphe'>{text}</p>
