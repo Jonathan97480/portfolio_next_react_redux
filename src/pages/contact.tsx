@@ -5,6 +5,7 @@ import { BsFacebook, BsLinkedin, BsTwitter } from 'react-icons/bs';
 import Image from "next/image";
 import { BiLoader } from 'react-icons/bi';
 import { event } from "nextjs-google-analytics";
+import { saveFormContactSend } from "./api/projects";
 
 interface SubmitAction {
     submit: boolean,
@@ -52,6 +53,16 @@ export default function Contact() {
                     category: "Contact",
                     label: `message envoyer avec succès par ${data.get("name") as string} `,
                 });
+
+                saveFormContactSend({
+                    data: {
+                        email: data.get("email") as string,
+                        name: data.get("name") as string,
+                        message: data.get("message") as string
+                    }
+
+                })
+
                 form.reset()
             } else {
                 response.json().then(data => {

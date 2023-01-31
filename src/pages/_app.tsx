@@ -5,7 +5,10 @@ import { wrapper } from '../redux/store'
 import { Provider } from 'react-redux'
 import { GoogleAnalytics } from "nextjs-google-analytics";
 
+console.log = () => { }
+
 function App({ Component, pageProps, ...rest }: AppProps) {
+
     const { store, props } = wrapper.useWrappedStore(rest)
     return (
         <Provider store={store}>

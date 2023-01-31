@@ -2,6 +2,7 @@
 export const BASE_API_URL = "https://api.jon-dev.fr"
 export const BASE_URL = "https://api.jon-dev.fr"
 export const AUTH = "/api/auth/local"
+export const FORM_STRAPI_URL = "/api/contact-formulaires"
 export const USER_COOKIE = "user"
 export const RGPD_COOKIE = "rgpd"
 
@@ -63,6 +64,32 @@ export const getProjects = async () => {
     })
 
     return newProjects
+
+
+}
+
+
+interface DataFormulaire {
+    data: {
+        name: string
+        email: string
+        message: string
+    }
+
+}
+
+export const saveFormContactSend = async (data: DataFormulaire) => {
+
+    const res = await fetch(BASE_API_URL + FORM_STRAPI_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+    const result = await res.json()
+    console.log(result)
+    return result
 
 
 }
