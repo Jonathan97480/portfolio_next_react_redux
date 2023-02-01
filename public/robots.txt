@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://site.jon-dev.fr
+
+# Sitemaps
+Sitemap: https://site.jon-dev.fr/sitemap.xml

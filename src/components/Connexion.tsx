@@ -158,7 +158,7 @@ export default function Connexion({ onClose, isClose = false }: ConnexionProps) 
             <div className={`connexion ${isAnimeClose ? 'connexion__close' : "connexion__open"}  `}>
                 <AiFillCloseCircle className='connexion__iconClose' onClick={closeConnexion} />
 
-                <Image className='connexion__cover' src={require('../images/cover/connexion.jpg')} alt="connection illustration" loading='lazy' width={509} height={429} />
+                <Image className='connexion__cover' src={require('../images/cover/connexion.webp')} alt="connection illustration" loading='lazy' width={509} height={429} />
 
                 <div className='connexion__content'>
                     <div className={` connexion__content__loader ${submit.submit ? 'connexion__content__loader__active' : ""} `}>

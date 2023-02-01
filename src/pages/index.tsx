@@ -7,14 +7,14 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import bg_remarque from '../images/cover/remarque.jpg'
-import bg_services from '../images/cover/services.jpg'
-import bg_projet from '../images/cover/projet.jpg'
-import bg_wireframe from '../images/cover/wireframe.jpg'
-import bg_maquette from '../images/cover/maquette.jpg'
-import bg_development from '../images/cover/development.jpg'
-import bg_lancement from '../images/cover/start.jpg'
-import bg_woman from '../images/cover/woman_projet.jpg'
+import bg_remarque from '../images/cover/remarque.webp'
+import bg_services from '../images/cover/services.webp'
+import bg_projet from '../images/cover/projet.webp'
+import bg_wireframe from '../images/cover/wireframe.webp'
+import bg_maquette from '../images/cover/maquette.webp'
+import bg_development from '../images/cover/development.webp'
+import bg_lancement from '../images/cover/start.webp'
+import bg_woman from '../images/cover/woman_projet.webp'
 import Link from 'next/link'
 import { getProjects, Project } from './api/projects'
 import { setProject } from '@/redux/slice/projectSlice'
@@ -100,7 +100,7 @@ export default function Home() {
                 <h1 className='title'>Qui sommes nous</h1>
                 <div className='home__about--content'>
                     <Image
-                        src={require('../images/cover/about.jpg')}
+                        src={require('../images/cover/about.webp')}
                         alt='logo du site'
                         width={576}
                         height={309}

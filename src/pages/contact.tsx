@@ -100,7 +100,7 @@ export default function Contact() {
                                 <p className="paragraphe">{submitAction.submitMessage}</p>
                             </div>
                         }
-                        <Image className="contact__content__cover" src={require('../images/cover/contact.jpg')} alt="illustration pour la page de contact" width={514} height={565} loading="lazy" />
+                        <Image className="contact__content__cover" src={require('../images/cover/contact.webp')} alt="illustration pour la page de contact" width={514} height={565} loading="lazy" />
                         <div className="contact__content__right">
 
                             <h1 className="contact__content__right__title title">Contacter nous</h1>

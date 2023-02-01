@@ -12,7 +12,7 @@ export default function page404() {
             className="page404 "
 
         >
-            <Image className="page404__cover" src={require('../images/cover/404.jpg')} alt="404" width={500} height={500} />
+            <Image className="page404__cover" src={require('../images/cover/404.webp')} alt="404" width={500} height={500} />
             <div className="page404__blockParagraphe">
                 <p className="paragraphe">Oups ! Il semble que vous vous soyez perdu(e) dans les méandres d'Internet. Ne vous inquiétez pas, cela arrive à tout le monde.
                 </p>

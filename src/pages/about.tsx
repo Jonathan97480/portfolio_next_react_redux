@@ -11,7 +11,7 @@ export default function About() {
             className="about"
         >
             <h1 className="about__title title">À-propos de nous</h1>
-            <Image className="about__cover" src={require('../images/cover/about.jpg')} alt="illustration pour la page de présentation" width={576} height={309} loading="lazy" />
+            <Image className="about__cover" src={require('../images/cover/about.webp')} alt="illustration pour la page de présentation" width={576} height={309} loading="lazy" />
             <div className="about__blockParagraphe">
 
                 <p className="paragraphe">
