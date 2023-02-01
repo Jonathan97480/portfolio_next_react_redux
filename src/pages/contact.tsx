@@ -24,7 +24,7 @@ export default function Contact() {
         success: false,
         successMessage: "L'envoi du formulaire est confirmer notre équipe prendra contact avec vous dans les 48 heures",
         error: false,
-        errorMessage: "L'envoi du formulaire à échoué veuillez réessayé plus tard ou contacter nous par téléphone"
+        errorMessage: "L'envoi du formulaire à échoué veuillez réessayé plus tard ou contactez-nous par téléphone"
 
     })
     const submitForm = (_event: any) => {
@@ -103,7 +103,7 @@ export default function Contact() {
                         <Image className="contact__content__cover" src={require('../images/cover/contact.webp')} alt="illustration pour la page de contact" width={514} height={565} loading="lazy" />
                         <div className="contact__content__right">
 
-                            <h1 className="contact__content__right__title title">Contacter nous</h1>
+                            <h1 className="contact__content__right__title title">Contactez-nous</h1>
                             <form className="form" onSubmit={(e) => submitForm(e)} id="my-form" method="POST" action="https://formspree.io/f/mlekglna">
                                 <div className="form__block">
                                     <label htmlFor="name"> Nom & Prénom</label>

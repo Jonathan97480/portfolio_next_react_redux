@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unescaped-entities */
-import { Main, SlidersHome, SlidersProjets, SlidersWork } from '@/components'
+import { Main, SlidersHome, SectionSliderProject, SlidersWork } from '@/components'
 import Carousel, { CarouselItem } from '@/components/Carousel'
 import { Button, Modal } from '@/components/ux'
 import Image from 'next/image'
@@ -119,39 +119,7 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-            <section className='home__projets ph-26' id='projet'>
-                <h2 className='home__projets-title title'>Nos derniers projets</h2>
-                <Carousel
-                    typeController='Circle'
-                    btnEnabled={false}
-                    delay={5000}
-                >
-                    {
-                        projects.map((project: Project, index) => {
-                            return (
-                                <CarouselItem key={index + '-project'}>
-                                    <SlidersProjets
-                                        img={{
-                                            src: project.cover,
-                                            alt: 'logo du site',
-                                        }}
-                                        title={project.title}
-                                        text={project.description}
-                                        tech={project.technologies}
-                                        links={{
-                                            ios: project.ios_url,
-                                            android: project.android_url,
-                                            site: project.site_url,
-                                        }}
-                                    />
-                                </CarouselItem>
-                            )
-                        })
-                    }
-
-
-                </Carousel>
-            </section>
+            <SectionSliderProject projects={projects} />
 
             <section className='home__work ph-26' id='methode'>
                 <h2 className='home__work-title title'>Nos méthode de travail</h2>

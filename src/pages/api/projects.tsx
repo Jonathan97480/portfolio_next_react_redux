@@ -22,6 +22,8 @@ export interface Project {
     site_url?: string
     android_url?: string
     ios_url?: string
+    github_url?: string
+    figma_url?: string
 }
 
 export const getProjects = async () => {
@@ -47,6 +49,8 @@ export const getProjects = async () => {
             site_url: project.attributes.Site_url,
             android_url: project.attributes.Android_url,
             ios_url: project.attributes.IPhone_url,
+            github_url: project.attributes.Github_url,
+            figma_url: project.attributes.Figma_url,
             technologies: []
         }
 

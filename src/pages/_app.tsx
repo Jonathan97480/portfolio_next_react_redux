@@ -5,7 +5,7 @@ import { wrapper } from '../redux/store'
 import { Provider } from 'react-redux'
 import { GoogleAnalytics } from "nextjs-google-analytics";
 
-console.log = () => { }
+/* console.log = () => { } */
 
 function App({ Component, pageProps, ...rest }: AppProps) {
 
