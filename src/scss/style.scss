@@ -8,17 +8,31 @@
 //layout
 @import 'layout/header';
 @import 'layout/footer';
+
+
 //component
 @import 'components/carousel';
-@import 'components/ux/button';
-@import 'components/ux/modal';
-@import 'components/ux/form';
 @import 'components/sliderHome';
-@import 'components/slidersProjets';
 @import 'components/slidersWork';
 @import 'components/connexion';
 @import 'components/rgpd';
 @import 'components/imageLoader';
+
+/* UX */
+@import 'components/ux/button';
+@import 'components/ux/modal';
+@import 'components/ux/form';
+
+
+/* section Project */
+@import 'components/SectionProject/sectionProject';
+@import 'components/SectionProject/slidersProject';
+@import 'components/SectionProject/getLinks';
+@import 'components/SectionProject/modalProject';
+@import 'components/SectionProject/technologiesLogo';
+
+
+
 
 
 

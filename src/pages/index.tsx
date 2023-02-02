@@ -27,6 +27,49 @@ export default function Home() {
     const [projects, setProjects] = useState<Project[]>([])
     const projectsRedux = useSelector((state: any) => state.Project.project)
 
+    const schema = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Jon_dev",
+        "url": "https://site.jon-dev.fr",
+        "logo": "https://site.jon-dev.fr/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.405bf297.png&w=48&q=75",
+        "sameAs": [
+            'https://www.linkedin.com/in/gauvin-jonathan/',
+            'https://www.facebook.com/jon.dev974/',
+            'https://www.instagram.com/jon97480/',
+            'https://twitter.com/jonathanfrt9741',
+        ],
+
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+262 0692417574",
+            "contactType": "customer service",
+            "email": "jon.dev974@gmail.com",
+            "url": "https://site.jon-dev.fr/contact",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+        },
+
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Saint-Joseph",
+            "addressRegion": "La Réunion",
+            "postalCode": "97480",
+            "streetAddress": "6 rue René Hoarau ",
+            "addressCountry": "FR"
+
+        },
+
+        "image": [
+            "https://site.jon-dev.fr/_next/image?url=https%3A%2F%2Fapi.jon-dev.fr%2Fuploads%2FCapture_d_ecran_2023_01_23_181310_ad0acd00a3.jpg&w=640&q=75",
+            "https://site.jon-dev.fr/_next/image?url=https%3A%2F%2Fapi.jon-dev.fr%2Fuploads%2FCapture_d_ecran_2023_01_16_150907_c0b1b99fe1.jpg&w=640&q=75",
+            "https://site.jon-dev.fr/_next/image?url=https%3A%2F%2Fapi.jon-dev.fr%2Fuploads%2FCapture_d_ecran_2023_01_23_181117_ed827985b0.jpg&w=640&q=75",
+        ]
+
+
+
+    }
+
 
     useEffect(() => {
 
@@ -52,6 +95,7 @@ export default function Home() {
             Nous offrons des services professionnels pour créer et améliorer vos sites web et applications. 
             Notre équipe expérimentée peut vous aider à atteindre vos objectifs. 
             Visitez notre site pour en savoir plus sur nos services et pour obtenir des conseils sur le développement.`}
+            schema={schema}
         >
             <section className='home__heroHome' id='home'>
                 <Carousel

@@ -17,28 +17,39 @@ export const ModalProject = ({ title, img, tech, text, links, isVisible, handleC
         document.body.style.overflow = isView ? "hidden" : "unset";
 
         if (isView === false) {
-            handleCloseModal(isView)
+            handleCloseModalAnimated()
         }
     }, [isView])
+
+    const handleCloseModalAnimated = () => {
+        setTimeout(() => {
+            handleCloseModal(false)
+        }, 400)
+    }
 
 
 
     return (
-        <article className='modalProject' style={{ display: isView ? 'flex' : 'none' }} >
+        <article className={`modalProject  ${isView ? 'modalProject-open' : 'modalProject-close'}`} >
             <div className='modalProject__content'>
-                <div className='modalProject__content__header'>
-                    <h1 className="title--medium">{title}</h1>
-                    <AiFillCloseCircle className='modalProject__content__header__btnClose' onClick={() => {
+                <div className="modalProject__content__btnClose">
+
+
+                    <AiFillCloseCircle className='modalProject__content__btnClose__btn' onClick={() => {
                         setIsView(false)
 
                     }
 
                     } />
                 </div>
+                <div className='modalProject__content__header'>
+                    <h1 className="title--medium">{title}</h1>
+
+                </div>
                 <div className='modalProject__content__body'>
                     <div className='modalProject__content__body__cover'>
                         <ImageLoader
-                            className='modalProject__content__body'
+                            className='modalProject__content__body__img'
                             src={img.src}
                             alt={img.alt}
                             width={397}
@@ -48,6 +59,9 @@ export const ModalProject = ({ title, img, tech, text, links, isVisible, handleC
                     </div>
                     <div className='modalProject__content__body__info'>
                         <TechnologiesLogo tech={tech} />
+                        <h2 className="title--medium">
+                            Description du projet
+                        </h2>
                         {AddBr({ text })}
 
                         <div className='modalProject__content__body__info__links'>

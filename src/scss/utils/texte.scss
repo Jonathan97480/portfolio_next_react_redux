@@ -1,4 +1,4 @@
-.title, .title--small,.title--medium{
+.title, .title--small,.title--medium,.title--standard{
     font-family: Roboto_slab;
     font-weight: 700;
     font-size: 4rem;
@@ -6,12 +6,23 @@
     text-align: center;
 
     &--small{
-        font-size: 1.4rem;
+        font-size: 1.4rem !important;
+    }
+    &--standard{
+        font-size: 2.4rem !important;
+        margin-bottom: 1rem;
+    }
+    &--medium{
+        font-size: 3.2rem !important;
+    }
+    &_left{
+        text-align: left;
+    }
+    &_right{
+        text-align: right;
     }
 
-    &--medium{
-        font-size: 3.2rem;
-    }
+
 }
 
 .paragraphe{
@@ -23,6 +34,8 @@
     color: var(--color-secondary);
 
 }
+
+
 
 .strong{
     font-weight: 700;

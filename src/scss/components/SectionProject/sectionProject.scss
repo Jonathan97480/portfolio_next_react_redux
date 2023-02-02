@@ -1,0 +1,25 @@
+   .sectionProject{
+
+        &__title{
+            color: var(--color-primary)!important;
+            margin-bottom:4.7rem ;
+        }
+        
+        padding: 4.3rem 1.2rem;
+        background-color: var(--bk-color-secondary);
+        .carousel{
+            .active{
+                background-color: var(--color-tertiary);
+            }
+        }
+        &-title{
+            width: 100%;
+            text-align: center;
+            margin-bottom: 4.3rem;
+            color: var(--color-primary);
+            
+
+        }
+    
+
+    }

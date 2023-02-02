@@ -4,7 +4,7 @@ import { useCallback, useState } from "react"
 import Carousel, { CarouselItem } from "../Carousel"
 import { SlidersProjetsModalProps, SlidersProjetsProps } from "./interFaceSliderProject"
 import { ModalProject } from "./ModalProject"
-import SlidersProjets from "./SlidersProjets"
+import SlidersProjets from "./SlidersProject"
 
 
 interface ProjectProps {
@@ -28,8 +28,8 @@ export default function SectionSliderProject({ projects }: ProjectProps) {
 
 
     return (
-        <section className='home__projets ph-26' id='projet'>
-            <h2 className='home__projets-title title'>Nos derniers projets</h2>
+        <section className='sectionProject ph-26' id='projet'>
+            <h2 className='sectionProject__title title'>Nos derniers projets</h2>
             <Carousel
                 typeController='Circle'
                 btnEnabled={false}

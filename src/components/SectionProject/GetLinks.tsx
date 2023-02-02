@@ -10,9 +10,9 @@ export default function GetLinkProject({ links }: GetLinkProjectProps) {
 
     const linkValide = getLinkValide(links)
     return (
-        <div className='slidersProjets__content-info__links'>
-            <h4>Liens utiles </h4>
-            <span className='slidersProjets__content-info__links__content'>
+        <div className='getLinks '>
+            <h4 className="getLinks__title  title--medium2">Liens utiles </h4>
+            <span className='getLinks__content'>
 
                 {
                     linkValide.map((plateforme, index) => {

@@ -10,9 +10,11 @@ interface Props {
     className?: string
     pageTitle: string
     pageDescription: string
+    schema?: any
+
 }
 
-export default function Main({ children, className, pageTitle, pageDescription }: Props) {
+export default function Main({ children, className, pageTitle, pageDescription, schema }: Props) {
     const HeaderRedux = useSelector((state: any) => state.Header)
     const dispatch = useDispatch()
 
@@ -37,10 +39,15 @@ export default function Main({ children, className, pageTitle, pageDescription }
                 <meta name="twitter:description" content={pageDescription}></meta>
                 <meta name="twitter:image" content={logo.src}></meta>
                 <link rel="shortcut icon" href="favicon.ico" type={favIcon.src}></link>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+                />
             </Head>
             <div onClick={headerClose} className={className}>
                 {children}
             </div>
+
         </>
     )
 }

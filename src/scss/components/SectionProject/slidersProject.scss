@@ -1,0 +1,75 @@
+.slidersProjets{
+    
+    width:100%;
+    margin: auto;
+    margin-bottom: 4.3rem;
+    background-color: var(--color-primary);
+    padding: 23px;
+    border-radius: 25px;
+    box-shadow: 0px 2px 24px rgba(0, 0, 0, 0.05);
+   @include media(medium){
+         width: 832px;
+         height: 377px;
+        }
+     
+    &__title{
+        font-family: Roboto_slab;
+        font-size: 2.5rem;
+        text-align: center;
+        font-weight: 600;
+        color: var(--color-secondary);
+        margin-bottom: 3rem;
+
+    }
+    &__content{
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+        color: var(--color-secondary);
+        @include media(medium){
+            flex-direction: row;
+            gap: 2.5rem;
+        }
+        &-cover{
+           
+            margin: auto;
+            border-radius: 2rem;
+            object-fit: cover;
+      
+        }
+
+        &-info{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 3.3rem; 
+            margin: auto;
+     
+          
+           button{
+            margin: auto;
+            font-size: 1.3rem;
+           }
+            @include media(medium){
+                width: 50%;
+                align-items: center;
+                justify-content: center;
+                div{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+
+            
+        }
+    }
+
+.technologiesLogo__title,.getLinks__title{
+   
+    text-align: center!important;
+    width: 100%;
+}
+
+}

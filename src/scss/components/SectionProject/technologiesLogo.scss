@@ -1,0 +1,32 @@
+.technologiesLogo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    &__title{
+        font-size: 2rem!important;
+        font-weight: 700;
+       
+    }
+     &__icons{
+                display: flex;
+                gap: 1.7rem;
+                 @include media(medium){
+                  
+                    align-items: center;
+                    justify-content: center;
+             }
+                a{
+                    font-family: Roboto;
+                    font-weight: 400;
+                    font-size: 2rem;
+                    color: var(--color-tertiary);
+                    text-decoration: none;
+                    &:hover{
+                        text-decoration: underline;
+                       transform: translateY(-2px);
+                        transition: transform 0.3s ease-in-out;
+                    }
+                }
+            }
+}

@@ -79,19 +79,16 @@ const Carousel = ({ children, typeController = 'btn', btnEnabled = true, indicat
                 </button>
                 {React.Children.map(children, (child, index) => {
                     return (
-                        <>
+                        <span>
 
                             {
                                 typeController === 'btn' ?
-                                    <div className='btnIndicator-Iphone'>
-                                        <button
-                                            className={` btnIndicator ${index === activeIndex ? 'active' : ''}`}
-                                            onClick={() => {
-                                                updateIndex(index)
-                                            }}
-                                        >
-                                            {index + 1}
-                                        </button></div> :
+                                    <div className='btnIndicator' onClick={() => {
+                                        updateIndex(index)
+                                    }}>
+                                        <span>  {index + 1}</span>
+
+                                    </div> :
 
                                     <div
                                         onClick={() => {
@@ -100,7 +97,7 @@ const Carousel = ({ children, typeController = 'btn', btnEnabled = true, indicat
                                         className={`circle ${index === activeIndex ? 'active' : ''}`}
                                     ></div>
                             }
-                        </>
+                        </span>
                     )
                 })}
                 <button

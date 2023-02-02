@@ -10,7 +10,7 @@ import { TechnologiesLogo } from './TechnologiesLogo'
 
 
 
-export default function SlidersProjets({ img, title, text, links, tech, handleViewModal }: SlidersProjetsProps) {
+export default function SlidersProject({ img, title, text, links, tech, handleViewModal }: SlidersProjetsProps) {
 
 
 
@@ -32,25 +32,24 @@ export default function SlidersProjets({ img, title, text, links, tech, handleVi
                         <TechnologiesLogo
                             tech={tech}
                         />
-                        <div>
-                            <GetLinkProject
-                                links={links}
-                            />
 
-                            <button
-                                className='btn btn-primary'
-                                onClick={
-                                    () => {
-                                        handleViewModal(true, { img, title, text, links, tech })
-                                    }
+                        <GetLinkProject
+                            links={links}
+                        />
+
+
+
+                        <button
+                            className='btn btn-primary'
+                            onClick={
+                                () => {
+                                    handleViewModal(true, { img, title, text, links, tech })
                                 }
+                            }
 
-                            >
-                                Voir plus
-                            </button>
-                        </div>
-
-
+                        >
+                            Voir plus
+                        </button>
                     </div>
                 </div>
 

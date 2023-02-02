@@ -1,0 +1,152 @@
+    .modalProject{
+        position:fixed;
+        top: 0%;
+        left: 0%;
+        width: 100vw;
+        height: 100vh;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        @include media(medium){
+            padding: 4rem;
+        }
+        
+        
+         &-open{
+            animation:modalOpen 0.5s ease-in-out;
+        }
+
+        &-close{
+            animation:modalClose 0.5s ease-in-out;
+        }
+         
+        
+        border-radius: 2.5rem;
+        z-index: 100;
+        &__content{
+            position: relative;
+            padding: 1.7rem;
+            background-color:var(--color-primary);
+            border-radius: 2.5rem;
+            height: auto;
+            max-height: 100%;
+            overflow-y: scroll;
+            
+           
+            &__btnClose{
+                cursor: pointer;
+                font-size: 2.8rem;
+                color: var(--error-color-primary);
+                z-index: 2;
+                position: sticky;
+                left: 1rem;
+                top: 1rem;
+                text-align: right;
+                
+               
+            }
+            
+            &__header{
+                margin: auto;
+                margin-bottom: 4.7rem;
+                
+                max-width:100%;
+                
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            
+            
+            }
+            &__body{
+                display: flex;
+                flex-direction: column;
+                
+                gap: 1.7rem;
+                align-items: left;
+
+                .title--medium{
+                    margin-top: 4rem;
+                    margin-bottom: 1.7rem;
+                }
+
+                &__img{
+                     
+                    display: block;
+                    margin: auto;
+                    
+
+                    @include media(medium){
+                       
+                        height: 300px!important;
+                        display: block;
+                        margin: auto;
+                    }
+                }
+
+                &__info{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1.7rem;
+                    width: 80%;
+                    margin: auto;
+               
+
+                    &__paragraphe{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.6rem;
+                    }
+                    
+                }
+
+                &__cover{
+                    img{
+                        object-fit: cover;
+                        
+                    }
+                }
+            }
+        }
+        }
+
+        @keyframes modalOpen{
+            0%{
+                opacity: 0;
+                scale: 0.5;
+            }
+            100%{
+                opacity: 1;
+                scale: 1;
+            }
+        }
+
+        @keyframes modalClose{
+            0%{
+                opacity: 1;
+                scale: 1;
+            }
+            100%{
+                opacity: 0;
+                scale: 0.5;
+            }
+        }
+            
+        /* width */
+::-webkit-scrollbar {
+  width: 1rem;
+  
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--color-tertiary);
+  border-radius: 10px;
+}

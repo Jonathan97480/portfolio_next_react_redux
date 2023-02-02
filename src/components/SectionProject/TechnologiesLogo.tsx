@@ -4,9 +4,9 @@ import ImageLoader from "../ImageLoader"
 export const TechnologiesLogo = ({ tech }: { tech: Technologies[] }) => {
 
     return (
-        <>
-            <h3>Technologies utilisées</h3>
-            <span className='slidersProjets__content-info__cover'>
+        <div className="technologiesLogo">
+            <h3 className="technologiesLogo__title title--medium">Technologies utilisées</h3>
+            <span className='technologiesLogo__icons'>
                 {
                     tech.map((item) => {
                         return <ImageLoader
@@ -23,7 +23,7 @@ export const TechnologiesLogo = ({ tech }: { tech: Technologies[] }) => {
                 }
 
             </span>
-        </>
+        </div>
     )
 
 }
