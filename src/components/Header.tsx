@@ -6,14 +6,14 @@ import { setHeader } from '@/redux/slice/headerStatu.Slice'
 import Link from 'next/link'
 import { useSelector, useDispatch } from 'react-redux'
 import Connexion from './Connexion'
+import { ClientInterface, selectClient } from '@/redux/slice/clientSlice'
 
 
 export default function Header() {
     const HeaderRedux = useSelector((state: any) => state.Header)
-    const ClientRedux = useSelector((state: any) => state.Client)
+    const ClientRedux: ClientInterface = selectClient(useSelector((state: any) => state))
     const [isOpen, setIsOpen] = useState(false)
     const dispatch = useDispatch()
-
     const [openModalConnexion, setOpenModalConnexion] = useState(false)
 
     useEffect(() => {
@@ -92,7 +92,7 @@ export default function Header() {
                         </li>
                     </ul>
                 </nav>
-                {ClientRedux.client === null ? <Button
+                {ClientRedux === null ? <Button
                     text='Connexion'
                     onClick={() => {
                         dispatch(setHeader(false))

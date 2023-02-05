@@ -8,7 +8,7 @@ import { BsChevronDoubleUp } from 'react-icons/bs';
 import { BiLoader } from 'react-icons/bi';
 import { AUTH, BASE_API_URL, RGPD_COOKIE, USER_COOKIE } from '@/pages/api/projects';
 import { useDispatch } from 'react-redux';
-import { Client, setClient } from '@/redux/slice/clientSlice';
+import { ClientInterface, setClient } from '@/redux/slice/clientSlice';
 import { setCookie, getCookie, hasCookie } from 'cookies-next';
 
 
@@ -53,15 +53,23 @@ export default function Connexion({ onClose, isClose = false }: ConnexionProps) 
             closeConnexion();
         }
 
+
     }, [isClose]);
 
     useEffect(() => {
-
+        console.log("COOKIES", hasCookie(USER_COOKIE));
         if (hasCookie(USER_COOKIE)) {
-            const user = JSON.stringify(getCookie(USER_COOKIE));
-            console.log("USER COOKI", user);
+            const user = JSON.parse(getCookie(USER_COOKIE) as string);
             if (user) {
-                dispatch(setClient(JSON.parse(user) as Client));
+                console.log("USER", user);
+                dispatch(setClient({
+                    id: user.id,
+                    email: user.email,
+                    username: user.username,
+                    jwt: user.jwt,
+                    confirmed: user.confirmed,
+                    blocked: user.blocked
+                }));
             }
         }
     }, []);
@@ -110,7 +118,7 @@ export default function Connexion({ onClose, isClose = false }: ConnexionProps) 
 
         if (user) {
 
-            const curentUser: Client = {
+            const curentUser: ClientInterface = {
                 id: user.user.id,
                 blocked: user.user.blocked,
                 confirmed: user.user.confirmed,

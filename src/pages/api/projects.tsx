@@ -5,6 +5,8 @@ export const AUTH = "/api/auth/local"
 export const FORM_STRAPI_URL = "/api/contact-formulaires"
 export const USER_COOKIE = "user"
 export const RGPD_COOKIE = "rgpd"
+export const GET_PROJECTS = "/api/projet-clients"
+
 
 export interface Technologies {
     id: string
@@ -95,5 +97,84 @@ export const saveFormContactSend = async (data: DataFormulaire) => {
     console.log(result)
     return result
 
+
+}
+
+
+export interface ProjectClientInterface {
+    id: string
+    Android_url: string
+    Cahier_des_charges: string
+    Description: string
+    Github_url: string
+    IPhone_url: string
+    Site_url: string
+    Title_project: string
+    Cover_url: string
+    Historiques: {
+        id: string
+        title: string
+        description: string
+        image: {
+            name: string
+            url: string
+        }
+        Documents: {
+            name: string
+            url: string
+        }[]
+    }[]
+    Icon_url: string
+
+
+
+}
+
+export const getProjectsClient = async (id_client: number, token: string) => {
+
+
+
+
+    const Option = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        },
+    }
+
+    /* define Request */
+    const requestCore = `?populate[0]=Cover&populate[1]=Icon&populate[2]=Historiques.image&populate[3]=Historiques.Documents&filters[users_permissions_user][id][$eq]=${id_client}`
+
+
+    const res = await fetch(BASE_API_URL + GET_PROJECTS + requestCore, Option)
+
+    const projects = await res.json()
+    const projectsClient: ProjectClientInterface[] = [];
+    projects.data.map((project: any) => {
+        const dataProject = project.attributes
+        console.log("API RETURN", dataProject)
+        const p: ProjectClientInterface = {
+            id: project.id,
+            Android_url: dataProject.Android_url,
+            Cahier_des_charges: dataProject.Cahier_des_charges,
+            Description: dataProject.Description,
+            Github_url: dataProject.Github_url,
+            IPhone_url: dataProject.IPhone_url,
+            Site_url: dataProject.Site_url,
+            Title_project: dataProject.Title_project,
+            Cover_url: BASE_URL + dataProject.Cover.data.attributes.url,
+            Historiques: dataProject.Historiques,
+            Icon_url: BASE_URL + dataProject.Icon.data.attributes.url
+
+        }
+        projectsClient.push(p)
+
+
+
+
+
+    })
+    return projectsClient
 
 }

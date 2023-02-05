@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-export interface Client {
+export interface ClientInterface {
     blocked: boolean;
     confirmed: boolean;
     email: string;
@@ -10,7 +10,7 @@ export interface Client {
 }
 
 export interface ClientState {
-    client: Client | null;
+    client: ClientInterface | null;
     error: string | null;
 }
 
@@ -41,7 +41,7 @@ export const ClientStatuSlice = createSlice({
 
 export const { setClient, setError, clearClient } = ClientStatuSlice.actions
 
-export const selectCloseHeader = (state: any) => state.Client.client
+export const selectClient = (state: any) => state.Client.client
 export const selectPartenairesLoading = (state: any) => state.Client.loading
 
 export default ClientStatuSlice.reducer

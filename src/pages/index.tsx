@@ -64,7 +64,8 @@ export default function Home() {
             "https://site.jon-dev.fr/_next/image?url=https%3A%2F%2Fapi.jon-dev.fr%2Fuploads%2FCapture_d_ecran_2023_01_23_181310_ad0acd00a3.jpg&w=640&q=75",
             "https://site.jon-dev.fr/_next/image?url=https%3A%2F%2Fapi.jon-dev.fr%2Fuploads%2FCapture_d_ecran_2023_01_16_150907_c0b1b99fe1.jpg&w=640&q=75",
             "https://site.jon-dev.fr/_next/image?url=https%3A%2F%2Fapi.jon-dev.fr%2Fuploads%2FCapture_d_ecran_2023_01_23_181117_ed827985b0.jpg&w=640&q=75",
-        ]
+        ],
+
 
 
 
