@@ -23,9 +23,8 @@ export default function Client() {
 
     const userRedux = selectClient(useSelector((state: any) => state)) as ClientInterface
 
-    console.log("REDUX USER", userRedux)
     useEffect(() => {
-        console.log("REDUX USER", userRedux)
+
         if (userRedux === null || userRedux === undefined) {
             push('/')
             return
@@ -39,7 +38,7 @@ export default function Client() {
             }
 
         }).catch((err) => {
-            console.log(err)
+            console.error(err)
         }
         )
 

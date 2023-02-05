@@ -94,7 +94,6 @@ export const saveFormContactSend = async (data: DataFormulaire) => {
         body: JSON.stringify(data),
     })
     const result = await res.json()
-    console.log(result)
     return result
 
 
@@ -115,15 +114,17 @@ export interface ProjectClientInterface {
         id: string
         title: string
         description: string
+        date: string
         image: {
             name: string
             url: string
-        }
+        }[] | null
+        ,
         Documents: {
             name: string
             url: string
-        }[]
-    }[]
+        } | null,
+    }[],
     Icon_url: string
 
 
@@ -151,10 +152,13 @@ export const getProjectsClient = async (id_client: number, token: string) => {
 
     const projects = await res.json()
     const projectsClient: ProjectClientInterface[] = [];
+
     projects.data.map((project: any) => {
+
         const dataProject = project.attributes
-        console.log("API RETURN", dataProject)
+        console.log(dataProject)
         const p: ProjectClientInterface = {
+
             id: project.id,
             Android_url: dataProject.Android_url,
             Cahier_des_charges: dataProject.Cahier_des_charges,
@@ -164,17 +168,38 @@ export const getProjectsClient = async (id_client: number, token: string) => {
             Site_url: dataProject.Site_url,
             Title_project: dataProject.Title_project,
             Cover_url: BASE_URL + dataProject.Cover.data.attributes.url,
-            Historiques: dataProject.Historiques,
+
+            Historiques: dataProject.Historiques !== null ? dataProject.Historiques.map((historique: any) => {
+
+                return {
+                    id: historique.id,
+                    title: historique.Titre,
+                    description: historique.Description,
+                    date: historique.date,
+                    image: historique.image.data !== null ? historique.image.data.map((image: any) => {
+
+                        return {
+                            name: image.attributes.name,
+                            url: BASE_URL + image.attributes.url
+                        }
+                    }) : null,
+
+                    Documents: historique.Documents.data !== null ? {
+                        name: historique.Documents.data?.attributes.name,
+                        url: BASE_URL + historique.Documents.data?.attributes.url
+                    } : null
+                }
+            }) : null,
             Icon_url: BASE_URL + dataProject.Icon.data.attributes.url
 
         }
+
+
         projectsClient.push(p)
 
-
-
-
-
     })
+
     return projectsClient
+
 
 }

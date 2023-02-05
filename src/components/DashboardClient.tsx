@@ -59,45 +59,26 @@ export default function DashboardClient({ params, setView }: Props) {
 
             </div>
             {
-                curentProject &&
+                curentProject?.Historiques &&
                 <div className="client__left__historique client__block">
                     <p className="title--small">Historiques du projet</p>
                     <div>
-                        <button
-                            onClick={
-                                () => setView('historique', {})
-                            }
-                        >
-                            <p>Signature contrat <span>01/01/2023</span></p>
-                        </button>
-                        <button
-                            onClick={
-                                () => setView('historique', {})
-                            }
-                        >
-                            <p>Signature contrat <span>01/01/2023</span></p>
-                        </button>
-                        <button
-                            onClick={
-                                () => setView('historique', {})
-                            }
-                        >
-                            <p>Signature contrat <span>01/01/2023</span></p>
-                        </button>
-                        <button
-                            onClick={
-                                () => setView('historique', {})
-                            }
-                        >
-                            <p>Signature contrat <span>01/01/2023</span></p>
-                        </button>
-                        <button
-                            onClick={
-                                () => setView('historique', {})
-                            }
-                        >
-                            <p>Signature contrat <span>01/01/2023</span></p>
-                        </button>
+                        {
+                            curentProject.Historiques?.map((historique, index) => {
+                                console.log(historique)
+                                return (
+                                    <button
+                                        key={index + historique.title}
+                                    >
+                                        <p>{historique.title}<span>{historique.date}</span></p>
+                                    </button>
+
+
+                                )
+
+                            })
+                        }
+
                     </div>
                 </div>}
             {

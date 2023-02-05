@@ -57,11 +57,11 @@ export default function Connexion({ onClose, isClose = false }: ConnexionProps) 
     }, [isClose]);
 
     useEffect(() => {
-        console.log("COOKIES", hasCookie(USER_COOKIE));
+
         if (hasCookie(USER_COOKIE)) {
             const user = JSON.parse(getCookie(USER_COOKIE) as string);
             if (user) {
-                console.log("USER", user);
+
                 dispatch(setClient({
                     id: user.id,
                     email: user.email,
