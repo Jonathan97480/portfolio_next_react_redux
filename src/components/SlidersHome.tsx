@@ -12,12 +12,15 @@ interface SlidersHomeProps {
 
 export default function SlidersHome({ img, title, text }: SlidersHomeProps) {
     return (
-        <div className='sliderHome' style={{ backgroundImage: `url(${img.src})` }}>
-            {/*  <Image className='sliderHome__img' src={require(`../images/cover/${img.src}`)} alt={img.alt} width={1280} height={600} /> */}
+        <div className='sliderHome' >
+            <Image className='sliderHome__img' src={img.src} alt={img.alt} width={1280} height={600} />
             <div className='sliderHome__content'>
-                <h2 className='sliderHome__content--title'>{title}</h2>
-                <p className='sliderHome__content--paragraphe'>{text}</p>
+                <div className='sliderHome__content__card'>
+                    <h2 className='sliderHome__content--title'>{title}</h2>
+                    <p className='sliderHome__content--paragraphe'>{text}</p>
+                </div>
             </div>
+
         </div>
     )
 }

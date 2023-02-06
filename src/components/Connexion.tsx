@@ -181,7 +181,7 @@ export default function Connexion({ onClose, isClose = false }: ConnexionProps) 
                             <div className={`connexion__content__infoClient ${isInoOen ? 'connexion__content__infoClient__open' : 'connexion__content__infoClient__close'}`}>
 
                                 <p>
-                                    Vous être client vous avez reçu un email qui contenait des identifiants de connexion pour suivre l'évolution de votre projet veuillez vous connecter ici
+                                    Nous vous invitons à consulter votre boîte de réception, vous devriez y trouver un mail avec vos identifiants de connexion.
                                 </p>
                                 <BsChevronDoubleUp className='connexion__content__infoClient__chevron' onClick={() => handlerCloseInfo()} />
                             </div>

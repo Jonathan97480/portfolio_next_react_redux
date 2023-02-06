@@ -6,6 +6,24 @@
         padding: 4.3rem;
             
     }
+
+
+    &__accueille{
+        margin: auto;
+        max-width: 90rem;
+        padding: 2.3rem;
+        @include media(medium){
+            padding: 0;
+        }
+
+        h1,p{
+            margin-bottom: 4.3rem;
+        }
+        h1{
+            text-align: center;
+        }
+    }
+
         &__success{  
             color: var(--success-color-primary);
         }
@@ -63,12 +81,41 @@
                 gap: 2.5rem;
                  padding-top: 3.1rem;
                  padding-bottom: 3.1rem;
-
+                 background-color: var(--bk-color-secondary);
+                    @include media(medium){
+                        
+                        background-color: transparent;
+                    }
 
                 &__title{
                     text-align: center;
+                    font-size: 3rem;
+                    color: var(--color-primary);
+                     @include media(medium){
+                        
+                        color: var(--color-secondary);
+                    }
                 }
+                    .form{
+                        label{
+                            color: var(--color-primary);
+                            @include media(medium){
+                        
+                                color: var(--color-secondary);
+                            }
+                        }
 
+                        input,textarea{
+                            width: 27rem;
+                        }
+
+                        @include media(medium){
+                                 input,textarea{
+                            width: 31rem;
+                        }
+
+                        }
+                    }
               
             }
 

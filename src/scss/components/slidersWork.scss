@@ -1,6 +1,7 @@
 .sliderWork{
-
+ 
     .cardWork{
+         
         position: relative;
         width: 100%;
         display: flex;
@@ -20,21 +21,18 @@
         }
     &__numberMobile{
         display: flex;
-        align-items: center;
-        justify-content: center;
-        white-space: pre-wrap;
+         align-items: center; 
+        justify-content: center; 
         width:6.3rem ;
         height: 6.3rem;
         border-radius: 50%;
         background-color: var(--bk-color-primary);
-       
-        color: var(--color-primary);
+    
+        
+      color: var(--color-primary);
         font-size: 4rem;
-        font-weight: 900;
-        text-align: center;
+        font-weight: 900;      
         font-family: Roboto_slab;
-        
-        
 
         @include media(medium){
             display: none;
@@ -86,6 +84,7 @@
             font-weight: 700;
             text-align: center;
             margin-bottom: 1.5rem;
+            text-align: center;
           
         }
         &-text{
@@ -99,4 +98,13 @@
         }
     }
     }
+    
 }
+   .btnIndicator{
+    span{
+        display: contents;
+       
+        text-align: center;
+    }
+       
+    }

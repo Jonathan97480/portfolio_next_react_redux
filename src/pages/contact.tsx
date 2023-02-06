@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react-hooks/rules-of-hooks */
 import { Main } from "@/components";
 import React, { useState } from "react";
@@ -90,6 +91,19 @@ export default function Contact() {
             pageDescription={`Besoin de nous contacter? Vous pouvez nous trouver sous les noms d'utilisateur "jon dev", "jon-dev", ou "jon.dev".N'hésitez pas à nous envoyer un message si vous avez des questions ou des commentaires. Nous sommes là pour vous aider!`}
             className="contact"
         >
+            <div className="Page de contact__accueille">
+                <h1 className="title"> Bienvenue sur la page de contact de Jon_dev !</h1>
+
+                <p className="paragraphe">Nous sommes là pour répondre à toutes vos questions et pour vous aider à trouver les solutions les plus adaptées à vos besoins.
+                    <br />
+                    N'hésitez pas à nous contacter pour toutes demandes de devis ou pour tout autre question liée à nos services et produits.
+                    <br />
+                    Pour nous contacter, veuillez remplir le formulaire de contact ci-dessous.
+                    <br />
+                    Nous vous répondrons dès que possible. Si vous préférez nous envoyer un courriel, notre adresse est <a href="mailto:jon.dev974@gmail.com">jon.dev974@gmail.com</a>.
+
+                    Nous sommes impatients de vous aider à répondre à toutes vos demandes ! Merci de choisir Jon_dev pour vos projets web.</p>
+            </div>
             {
                 !submitAction.success && !submitAction.error ?
                     <div className="contact__content">
@@ -103,7 +117,7 @@ export default function Contact() {
                         <Image className="contact__content__cover" src={require('../images/cover/contact.webp')} alt="illustration pour la page de contact" width={514} height={565} loading="lazy" />
                         <div className="contact__content__right">
 
-                            <h1 className="contact__content__right__title title">Contactez-nous</h1>
+                            <h2 className="contact__content__right__title title">Contactez-nous</h2>
                             <form className="form" onSubmit={(e) => submitForm(e)} id="my-form" method="POST" action="https://formspree.io/f/mlekglna">
                                 <div className="form__block">
                                     <label htmlFor="name"> Nom & Prénom</label>
@@ -136,7 +150,7 @@ export default function Contact() {
                     </div>
             }
             <div className="contact__reseaux" >
-                <h2 className="contact__reseaux__title ">Suivez nous sur les réseaux sociaux</h2>
+                <h3 className="contact__reseaux__title ">Suivez nous sur les réseaux sociaux</h3>
                 <div className="contact__reseaux__blackLink">
                     <a href="https://www.linkedin.com/in/gauvin-jonathan" target={'_blank'}
                         rel='noreferrer'
