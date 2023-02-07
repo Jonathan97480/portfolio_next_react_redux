@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 
 import { useEffect, useState } from "react"
 import { DashboardClient, HistoriqueClient, HomeClient, Main, ProjetClient } from "@/components"
 import { useSwipeable } from 'react-swipeable'
 import { useSelector } from "react-redux"
 import { ClientInterface, selectClient } from "@/redux/slice/clientSlice"
-import { getProjectsClient, ProjectClientInterface } from "./api/projects"
+import { getProjectsClient, Historiques, ProjectClientInterface } from "./api/projects"
 import { useRouter } from "next/router"
 
 
@@ -13,6 +14,7 @@ export default function Client() {
     const [curentView, setCurentView] = useState<'historique' | 'projet' | 'home'>('home')
     const [projectsClient, setProjectsClient] = useState<ProjectClientInterface[]>([])
     const [curentProject, setCurentProject] = useState<ProjectClientInterface | null>(null)
+    const [curentHistorique, setCurentHistorique] = useState<Historiques | null>(null)
     const { push, query, isReady } = useRouter();
     const handlers = useSwipeable({
         onSwipedLeft: () => setWarperOpen(false),
@@ -46,11 +48,13 @@ export default function Client() {
 
     const handlersView = (view: 'historique' | 'projet' | 'home', params: {
         project: ProjectClientInterface | null,
-        client: ClientInterface | null
+        client: ClientInterface | null,
+        curentHistorique: Historiques | null
     }) => {
 
         setCurentView(view)
         setCurentProject(params.project)
+        setCurentHistorique(params.curentHistorique)
     }
     return (
         <Main
@@ -75,6 +79,7 @@ export default function Client() {
                     {getCurentView(curentView, {
                         client: userRedux,
                         curentProject: curentProject as ProjectClientInterface,
+                        curentHistorique: curentHistorique as Historiques
                     })}
                 </div>
             </div>
@@ -83,13 +88,17 @@ export default function Client() {
 }
 
 const getCurentView = (view: 'historique' | 'projet' | 'home', params: {
-    client: ClientInterface,
-    curentProject: ProjectClientInterface
+    client: ClientInterface | null,
+    curentProject: ProjectClientInterface | null,
+    curentHistorique: Historiques | null
+
 }) => {
     switch (view) {
         case 'historique':
             return <HistoriqueClient
-                params={params}
+                params={
+                    { historiques: params.curentHistorique }
+                }
             />
         case 'projet':
             return <ProjetClient

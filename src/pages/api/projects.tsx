@@ -99,6 +99,21 @@ export const saveFormContactSend = async (data: DataFormulaire) => {
 
 }
 
+export interface Historiques {
+    id: string
+    title: string
+    description: string
+    date: string
+    image: {
+        name: string
+        url: string
+    }[] | null
+    ,
+    Documents: {
+        name: string
+        url: string
+    } | null,
+}
 
 export interface ProjectClientInterface {
     id: string
@@ -109,25 +124,9 @@ export interface ProjectClientInterface {
     IPhone_url: string
     Site_url: string
     Title_project: string
-    Cover_url: string
-    Historiques: {
-        id: string
-        title: string
-        description: string
-        date: string
-        image: {
-            name: string
-            url: string
-        }[] | null
-        ,
-        Documents: {
-            name: string
-            url: string
-        } | null,
-    }[],
-    Icon_url: string
-
-
+    Cover_url: string | null
+    Historiques: Historiques[],
+    Icon_url: string | null
 
 }
 
@@ -153,10 +152,12 @@ export const getProjectsClient = async (id_client: number, token: string) => {
     const projects = await res.json()
     const projectsClient: ProjectClientInterface[] = [];
 
+    console.log(projects)
+
     projects.data.map((project: any) => {
 
         const dataProject = project.attributes
-        console.log(dataProject)
+
         const p: ProjectClientInterface = {
 
             id: project.id,
@@ -167,14 +168,14 @@ export const getProjectsClient = async (id_client: number, token: string) => {
             IPhone_url: dataProject.IPhone_url,
             Site_url: dataProject.Site_url,
             Title_project: dataProject.Title_project,
-            Cover_url: BASE_URL + dataProject.Cover.data.attributes.url,
+            Cover_url: dataProject.Cover.data ? BASE_URL + dataProject.Cover.data.attributes.url : null,
 
             Historiques: dataProject.Historiques !== null ? dataProject.Historiques.map((historique: any) => {
 
                 return {
                     id: historique.id,
                     title: historique.Titre,
-                    description: historique.Description,
+                    description: historique.description,
                     date: historique.date,
                     image: historique.image.data !== null ? historique.image.data.map((image: any) => {
 
@@ -190,7 +191,7 @@ export const getProjectsClient = async (id_client: number, token: string) => {
                     } : null
                 }
             }) : null,
-            Icon_url: BASE_URL + dataProject.Icon.data.attributes.url
+            Icon_url: dataProject.Icon.data ? BASE_URL + dataProject.Icon.data.attributes.url : null
 
         }
 

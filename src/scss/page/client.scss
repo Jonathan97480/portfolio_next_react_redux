@@ -1,5 +1,7 @@
 .client{
-
+    p{
+        color:var(--color-secondary)
+    }
     /* variable local */
     --left-block-size:32.2rem;
     --gap-left-right: 3.5rem;
@@ -109,6 +111,16 @@
 
         &__historique{
             gap: 1.6rem;
+            
+            &-active{
+                 
+                p{
+                    color: var(--color-tertiary);
+                    font-weight: 600;
+                    padding:  0.3rem;
+
+                }
+            }
            
             &__title{
                 display: flex;
@@ -141,6 +153,15 @@
                     display: flex;
                     height: 2.3rem;
                     cursor: pointer;
+                     p{
+                        display: flex;
+                        align-items: center;
+                        gap: 1.5rem;
+                        font-family: Roboto;
+                        font-weight: 400;
+                        font-size: 1.3rem;
+                       
+                    } ;
                     
                     &:hover{
                         
@@ -154,15 +175,7 @@
 
                         }
                     }
-                    p{
-                        display: flex;
-                        align-items: center;
-                        gap: 1.5rem;
-                        font-family: Roboto;
-                        font-weight: 400;
-                        font-size: 1.3rem;
-                        color:var(--color-secondary)
-                    } ;
+                   
             }
            }
       
@@ -217,9 +230,9 @@
         }
         &__paragraphe{
                 margin: auto;
-                margin-bottom: 6.3rem;
+                margin-bottom: 4.3rem;
                 line-height: 3rem;
-               
+               white-space: normal;
             
         }
        
@@ -250,6 +263,69 @@
         }
         @include media(medium){
             padding-top: 5.7rem;
+        }
+    }
+
+
+    .historiqueClient{
+        .title{
+            margin-bottom: 4.6rem;
+        }
+        &__image{
+            img{
+                object-fit:scale-down;
+                background-color: var(--color-primary);
+            }
+            &__view{
+                width: 100%;
+            }
+
+            &__buttonBlock{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1.5rem;
+                margin-top: 2rem;
+                margin-bottom: 4.3rem;
+                button{
+                    cursor: pointer;
+                    border: none;
+                    border-radius: 5px;
+                    &:hover{
+                        img{
+                            background-color: var(--color-tertiary)!important;
+                        }
+                        background-color: var(--color-tertiary)!important;
+                        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                        color: var(--color-primary);
+                    }
+                }
+            }
+        }
+        
+        .paragraphe{
+            margin-bottom: 4.6rem;
+            line-height: 3rem;
+        }
+
+        &__document{
+            margin-bottom: 4.6rem;
+            h2{
+                text-align: left;
+                margin-bottom: 1rem;
+                font-size: 2rem!important;
+            }
+            a,p{
+                font-size: 1.3rem;
+                font-weight: 400;
+                font-family: Roboto;
+                text-decoration: none;
+                
+                color: var(--color-secondary);
+            }
+            a{
+                color: var(--color-tertiary);
+            }
         }
     }
 }

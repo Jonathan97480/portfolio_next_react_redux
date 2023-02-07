@@ -5,7 +5,7 @@ import Image from "next/image"
 interface Props {
     params: {
 
-        project: ProjectClientInterface
+        project: ProjectClientInterface | null
     }
 }
 
@@ -13,6 +13,8 @@ export default function ProjetClient({ params }: Props) {
     const [project] = [params.project]
 
     console.log("PROJECT", project);
+
+    if (!project) return null
 
     return (
         <>
@@ -22,22 +24,22 @@ export default function ProjetClient({ params }: Props) {
 
             <div className="client__right__linksUtiles">
                 <h2 className="title--medium" >Liens utiles</h2>
-                <a href={project.Github_url}
+                {project.Github_url && <a href={project.Github_url}
                     target="_blank"
                     rel="noreferrer"
                     title="Github"
                 >
                     <Image src={require('../../images/icons/figma.png')} width={59} height={59} alt="Icon pour Figma" />
                     <p>Lien vers la maquette Figma</p>
-                </a>
-                <a href={project.Cahier_des_charges}
+                </a>}
+                {project.Cahier_des_charges && <a href={project.Cahier_des_charges}
                     target="_blank"
                     rel="noreferrer"
                     title="Cahier des charges"
                 >
                     <Image src={require('../../images/icons/cahier_des_charges.png')} width={59} height={59} alt="Icon pour Le cahier des charges" />
                     <p>Lien du cahier des charges</p>
-                </a>
+                </a>}
                 <a href="https://discord.gg/JrQ9Ak5A"
                     target="_blank"
                     rel="noreferrer"
