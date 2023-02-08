@@ -122,6 +122,7 @@ export interface ProjectClientInterface {
     Description: string
     Github_url: string
     IPhone_url: string
+    Figma_url: string
     Site_url: string
     Title_project: string
     Cover_url: string | null
@@ -166,6 +167,7 @@ export const getProjectsClient = async (id_client: number, token: string) => {
             Description: dataProject.Description,
             Github_url: dataProject.Github_url,
             IPhone_url: dataProject.IPhone_url,
+            Figma_url: dataProject.Figma,
             Site_url: dataProject.Site_url,
             Title_project: dataProject.Title_project,
             Cover_url: dataProject.Cover.data ? BASE_URL + dataProject.Cover.data.attributes.url : null,

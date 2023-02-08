@@ -7,6 +7,7 @@ import { clearClient, ClientInterface } from "@/redux/slice/clientSlice";
 import { useRouter } from "next/router";
 import { useState, useCallback } from "react";
 import { textSplit } from "@/functions/global";
+import { BiArrowFromLeft } from "react-icons/bi";
 
 interface Props {
     setView: (view: 'historique' | 'projet' | 'home', params: {
@@ -18,20 +19,26 @@ interface Props {
         client: ClientInterface
         ProjectsClient: ProjectClientInterface[]
     }
+
+    setWrapperOpenOrClose: (open: boolean) => void
+    isOpen: boolean
+
 }
 
-export default function DashboardClient({ params, setView }: Props) {
+export default function DashboardClient({ params, setView, setWrapperOpenOrClose, isOpen }: Props) {
 
     const dispatch = useDispatch();
     const { push, query, isReady } = useRouter();
     const [client, ProjectsClient] = [params.client, params.ProjectsClient]
     const [curentProject, setCurentProject] = useState<ProjectClientInterface | null>(null)
     const [curentIndexProjectActive, setCurentIndexProjectActive] = useState<number | null>(0)
-    const [curentIndexHistoriqueActive, setCurentIndexHistoriqueActive] = useState<number | null>(0)
+    const [curentIndexHistoriqueActive, setCurentIndexHistoriqueActive] = useState<number | null>(-1)
 
     const setProject = useCallback((index: number) => {
         setCurentProject(ProjectsClient[index])
         setCurentIndexProjectActive(index)
+        setCurentIndexHistoriqueActive(-1)
+
     }, [ProjectsClient])
 
     const setHistorique = useCallback((index: number) => {
@@ -40,16 +47,27 @@ export default function DashboardClient({ params, setView }: Props) {
     }, [])
 
     return (
-        <>
+        <div className="dashboardClient">
+            <span className={isOpen ? "dashboard__section__mobileIcon dashboard__section__mobileIcon-open" : "dashboard__section__mobileIcon"}
+                onClick={() => {
+                    if (isOpen) {
+                        setWrapperOpenOrClose(false)
+                        return
+                    }
+                    setWrapperOpenOrClose(true)
+                }}
+            >
+                <BiArrowFromLeft />
+            </span>
 
-
-            <div className="client__left__nameClient client__block">
-                <Image src={require('../images/icons/cliente.png')} width={22} height={22} alt="icon représentant le client ou la cliente" />
+            <div className="dashboardClient__nameClient dashboard__section">
+                <Image src={require('../../images/icons/cliente.png')} width={22} height={22} alt="icon représentant le client ou la cliente" />
                 <p className="title--small">{client.username}</p>
 
             </div>
 
-            <div className=" client__left__projets client__block">
+            <div className=" dashboardClient__projets dashboard__section">
+
                 <p className="title--small">Vos projets</p>
                 {
                     ProjectsClient.map((project, index) => {
@@ -62,11 +80,14 @@ export default function DashboardClient({ params, setView }: Props) {
                                         , curentHistorique: null
                                     })
                                     setProject(index)
+                                    if (isOpen) {
+                                        setWrapperOpenOrClose(false)
+                                    }
                                 }
-                            } className={curentIndexProjectActive === index ? "client__left__projets-active" : "client__left__projets"}>
+                            } className={curentIndexProjectActive === index ? "dashboardClient__projets-active" : "dashboardClient__projets"}>
                                 <span>{/* <Image src="" alt="" /> */}</span>
 
-                                <p>{project.Title_project}</p>
+                                <p>{textSplit(project.Title_project, 20)}</p>
                             </button>
                         )
 
@@ -76,7 +97,7 @@ export default function DashboardClient({ params, setView }: Props) {
             </div>
             {
                 curentProject?.Historiques &&
-                <div className="client__left__historique client__block">
+                <div className="dashboardClient__historique dashboard__section">
                     <p className="title--small">Historiques du projet</p>
                     {curentProject.Historiques.length > 0 ? <div>
                         {
@@ -91,10 +112,14 @@ export default function DashboardClient({ params, setView }: Props) {
                                                     client: null,
                                                     curentHistorique: historique
                                                 })
+                                                setHistorique(index)
+                                                if (isOpen) {
+                                                    setWrapperOpenOrClose(false)
+                                                }
                                             }
                                         }
                                         key={index + historique.title}
-                                        className={curentIndexHistoriqueActive === index ? "client__left__historique-active" : "client__left__historique"}
+                                        className={curentIndexHistoriqueActive === index ? "dashboardClient__historique-active" : "dashboardClient__historique"}
                                     >
                                         <p>{textSplit(historique.title, 13)}<span>{historique.date}</span></p>
                                     </button>
@@ -109,7 +134,7 @@ export default function DashboardClient({ params, setView }: Props) {
                 </div>}
             {
                 curentProject &&
-                <div className="client__left__codeDoc client__block">
+                <div className="dashboardClient__codeDoc dashboard__section">
                     <p className="title--small">Code source & documentation</p>
                     {curentProject.Github_url || curentProject.Cahier_des_charges ? <> {
                         curentProject.Github_url && <a href={curentProject.Github_url}
@@ -117,7 +142,7 @@ export default function DashboardClient({ params, setView }: Props) {
                             rel="noreferrer"
                             title="lien vers le code source du projet"
                         >
-                            <Image src={require('../images/icons/github.png')} width={28} height={28} alt="Icon pour Github" />
+                            <Image src={require('../../images/icons/github.png')} width={28} height={28} alt="Icon pour Github" />
                             <p>Code GitHub </p>
                         </a>
                     }
@@ -127,13 +152,13 @@ export default function DashboardClient({ params, setView }: Props) {
                             rel="noreferrer"
                             title="lien vers le cahier des charges du projet"
                         >
-                            <Image src={require('../images/icons/cahier_des_charges.png')} width={28} height={28} alt="Icon pour le cahier des charges" />
+                            <Image src={require('../../images/icons/cahier_des_charges.png')} width={28} height={28} alt="Icon pour le cahier des charges" />
                             <p>Cahier des charges</p>
                         </a>}
                     </>
                         : <p>Aucun code source ou documentation disponible pour le moment</p>}
                 </div>}
-            <button className="client__left__btnLogout" onClick={
+            <button className="dashboardClient__btnLogout" onClick={
                 () => {
                     deleteCookie(USER_COOKIE);
                     dispatch(clearClient(true));
@@ -141,10 +166,10 @@ export default function DashboardClient({ params, setView }: Props) {
 
                 }
             }>
-                <Image src={require('../images/icons/cliente.png')} width={34} height={34} alt="" />
+                <Image src={require('../../images/icons/cliente.png')} width={34} height={34} alt="" />
                 <p>Déconnexion</p>
             </button>
 
-        </>
+        </div>
     )
 }

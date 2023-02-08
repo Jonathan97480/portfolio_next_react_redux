@@ -24,7 +24,7 @@ export default function ProjetClient({ params }: Props) {
 
             <div className="client__right__linksUtiles">
                 <h2 className="title--medium" >Liens utiles</h2>
-                {project.Github_url && <a href={project.Github_url}
+                {project.Figma_url && <a href={project.Figma_url}
                     target="_blank"
                     rel="noreferrer"
                     title="Github"

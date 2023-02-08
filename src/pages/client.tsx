@@ -65,16 +65,21 @@ export default function Client() {
             <div
                 {...handlers}
                 className={`client__warper ${warperOpen ? 'client__warper-push' : ''}`}>
-                <div className="client__left">
-                    {
-                        userRedux &&
-                        <DashboardClient params={{
-                            client: userRedux,
-                            ProjectsClient: projectsClient
-                        }} setView={handlersView}
 
-                        />}
-                </div>
+                {
+                    userRedux &&
+                    <DashboardClient params={{
+                        client: userRedux,
+                        ProjectsClient: projectsClient
+                    }}
+                        setView={handlersView}
+                        setWrapperOpenOrClose={
+                            (value: boolean) => setWarperOpen(value)
+                        }
+                        isOpen={warperOpen}
+                    />
+                }
+
                 <div className="client__right">
                     {getCurentView(curentView, {
                         client: userRedux,
